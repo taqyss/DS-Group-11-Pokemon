@@ -11,7 +11,7 @@ package ds_project;
 import java.util.Scanner;
 import java.util.List;
 import java.util.Random;
-//testing
+
 public class Game {
     private GameMap gameMap;
     private Player player;
