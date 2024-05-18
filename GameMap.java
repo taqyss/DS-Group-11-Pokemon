@@ -47,7 +47,7 @@ import java.util.HashMap;
             vermilionCity.addAdjacentCity(lavenderTown);
             vermilionCity.addAdjacentCity(saffronCity);
             vermilionCity.addAdjacentCity(fuchsiaCity);
-            celadonCity.addAdjacentCity(vermilionCity);
+            celadonCity.addAdjacentCity(saffronCity);
             celadonCity.addAdjacentCity(fuchsiaCity);
             fuchsiaCity.addAdjacentCity(celadonCity);
             fuchsiaCity.addAdjacentCity(vermilionCity);
