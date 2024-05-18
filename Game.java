@@ -52,13 +52,11 @@ public class Game {
                 case "6":
                     if (currentCity.getName().equals("Lavender Town")) {
                         enterPokeMaze();
-                    } else if (!currentCity.getName().equals("Lavender Town")) {
-                        System.out.println("PokeMaze is only available in Lavender Town.");
                     }
-                    if (currentCity.getName().equals("Saffron City")) {
-                        startRivalRace(); // New option for Rival's Race
+                    else if (currentCity.getName().equals("Saffron City")) {
+                        startRivalRace(); 
                     } else {
-                        System.out.println("Rival's Race is only available in Saffron City.");
+                        System.out.println("That option is not available here.");
                     }
                     break;
                 case "5":
