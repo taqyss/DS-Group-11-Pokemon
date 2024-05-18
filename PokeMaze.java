@@ -26,15 +26,13 @@ public class PokeMaze {
         pathStack = new Stack<>();
         gameRunning = true;
         
-        // You'll need to populate this layout based on the maze provided in the PDF.
         maze = new char[][]{
-                // This is a simplified example layout, adjust according to the provided maze
                 "#####################".toCharArray(),
-                "#S...#.......G.....E#".toCharArray(),
+                "#S...#G............E#".toCharArray(),
                 "###.#.#.###.###.###.#".toCharArray(),
                 "#...#...#G#...#.....#".toCharArray(),
                 "#.#####.#.#.#.#####.#".toCharArray(),
-                "#.............#.....#".toCharArray(),
+                "#............G#.....#".toCharArray(),
                 "#####################".toCharArray()
         };
     }
