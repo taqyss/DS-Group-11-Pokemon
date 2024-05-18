@@ -32,7 +32,7 @@ public class Game {
             City currentCity = gameMap.getCity(player.getLocation());
             System.out.println("You are currently in " + currentCity.getName());
 
-            displayOptions();
+            displayOptions(currentCity);
 
             String choice = scanner.nextLine();
 
@@ -47,12 +47,21 @@ public class Game {
                     //fightWildPokemon(currentCity);
                     break;
                 case "4":
-                    displayOptions();
-                    break;
-                case "5":
-                    enterPokeMaze();
+                    //displayOptions();
                     break;
                 case "6":
+                    if (currentCity.getName().equals("Lavender Town")) {
+                        enterPokeMaze();
+                    } else if (!currentCity.getName().equals("Lavender Town")) {
+                        System.out.println("PokeMaze is only available in Lavender Town.");
+                    }
+                    if (currentCity.getName().equals("Saffron City")) {
+                        startRivalRace(); // New option for Rival's Race
+                    } else {
+                        System.out.println("Rival's Race is only available in Saffron City.");
+                    }
+                    break;
+                case "5":
                     enterSafariZone();
                     break;
                 case "exit":
@@ -66,13 +75,18 @@ public class Game {
         scanner.close();
     }
 
-    private void displayOptions() {
+    private void displayOptions(City currentCity) {
         System.out.println("[1] Move to another city");
-        System.out.println("[2] Show Map of Kanto");
+        System.out.println("[2] Open Map of Kanto");
         System.out.println("[3] Fight Wild Pokémon");
         System.out.println("[4] Player Options");
-        System.out.println("[5] Enter PokeMaze");
-        System.out.println("[6] Enter Safari Zone");  // New option for Safari Zone
+        System.out.println("[5] Enter Safari Zone");
+        if (currentCity.getName().equals("Lavender Town")) {
+            System.out.println("[6] Enter PokeMaze");  
+        }
+        if (currentCity.getName().equals("Saffron City")) {
+            System.out.println("[6] Rival's Race");  // New option for Rival's Race only in Saffron City
+        }
         System.out.println("[exit] Exit game");
     }
 
@@ -93,18 +107,37 @@ public class Game {
         safariZone.sortPokemons();
         safariZone.printFinalSortedPokemons();
     }
+    
+    private void startRivalRace() {
+        String startCity = "Saffron City";
+        String destination = getRandomDestination(startCity);
 
-    private void displayOptions(City city) {
-        System.out.println("Options:");
-        System.out.println("1. Move");
-        System.out.println("2. Map of Kanto");
-        if (city.getGym() != null) {
-            System.out.println("Type 'gym' to challenge the gym leader: " + city.getGym().getLeaderName());
+        if (destination == null) {
+            System.out.println("No valid destination found for the race.");
+            return;
         }
-        if (!city.getWildPokemon().isEmpty()) {
-            System.out.println("Type 'wild' to encounter wild Pokémon");
+
+        System.out.println("The battle has begun! Your rival Gary has challenged you to a race to " + destination + ".");
+        List<String> shortestPath = gameMap.findShortestPath(startCity, destination);
+
+        System.out.println("Shortest Path:");
+        for (int i = 0; i < shortestPath.size() - 1; i++) {
+            System.out.print(shortestPath.get(i) + " -> ");
         }
-        System.out.println("Type 'exit' to exit the game");
+        System.out.println(destination);
+        System.out.println("Good luck on your race!");
+    }
+
+    private String getRandomDestination(String startCity) {
+        List<String> allCities = new ArrayList<>(gameMap.getAllCities());
+        Collections.shuffle(allCities);
+
+        for (String city : allCities) {
+            if (!city.equals(startCity) && !gameMap.isDirectlyAdjacent(startCity, city)) {
+                return city;
+            }
+        }
+        return null; // This should not happen if there are valid destinations
     }
 
 
@@ -221,9 +254,5 @@ public class Game {
     private void enterPokeMaze() {
         PokeMaze pokeMaze = new PokeMaze();
         pokeMaze.runMaze();
-        // Control returns here after the maze is completed or the player is caught
-        // You may want to add any updates to the player's state here
     }
 }
-
-
