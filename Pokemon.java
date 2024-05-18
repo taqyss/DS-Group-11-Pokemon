@@ -26,6 +26,10 @@ public class Pokemon {
         this.moves = new HashMap<>();
         initializeMoves();
     }
+
+    public Pokemon(String name) {
+        this.name = name;
+    }
     
     private void initializeMoves() {
         // Example: Initialize with two moves
