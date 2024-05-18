@@ -11,6 +11,7 @@ package ds_project;
 import java.util.Scanner;
 import java.util.List;
 import java.util.Random;
+import java.util.*;
 
 public class Game {
     private GameMap gameMap;
@@ -24,48 +25,73 @@ public class Game {
     }
 
     public void start() {
-        System.out.println("Welcome to Pokémon - Kanto Adventures!");
         boolean isRunning = true;
-        player.setLocation("Pallet Town");
+        Scanner scanner = new Scanner(System.in);
+
         while (isRunning) {
             City currentCity = gameMap.getCity(player.getLocation());
             System.out.println("You are currently in " + currentCity.getName());
-            displayOptions(currentCity);
 
-            String input = scanner.nextLine().toLowerCase();
-            switch (input) {
+            displayOptions();
+
+            String choice = scanner.nextLine();
+
+            switch (choice) {
                 case "1":
                     movePlayer(currentCity);
                     break;
                 case "2":
                     showMap(player.getLocation());
                     break;
-                case "gym":
-                    if (currentCity.getGym() != null) {
-                        GymBattle.battle(player, currentCity.getGym());
-                    } else {
-                        System.out.println("There is no gym in this city.");
-                    }
+                case "3":
+                    //fightWildPokemon(currentCity);
                     break;
-                case "wild":
-                    if (!currentCity.getWildPokemon().isEmpty()) {
-                        encounterWildPokemon(currentCity.getWildPokemon());
-                    } else {
-                        System.out.println("There are no wild Pokémon in this city.");
-                    }
+                case "4":
+                    displayOptions();
                     break;
-                case "maze":
+                case "5":
                     enterPokeMaze();
+                    break;
+                case "6":
+                    enterSafariZone();
                     break;
                 case "exit":
                     isRunning = false;
                     break;
                 default:
-                    System.out.println("Invalid command, please try again.");
+                    System.out.println("Invalid choice. Please try again.");
                     break;
             }
         }
         scanner.close();
+    }
+
+    private void displayOptions() {
+        System.out.println("[1] Move to another city");
+        System.out.println("[2] Show Map of Kanto");
+        System.out.println("[3] Fight Wild Pokémon");
+        System.out.println("[4] Player Options");
+        System.out.println("[5] Enter PokeMaze");
+        System.out.println("[6] Enter Safari Zone");  // New option for Safari Zone
+        System.out.println("[exit] Exit game");
+    }
+
+    private void enterSafariZone() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome to the Safari Zone! Enter the Pokémon in your party (separated by a comma):");
+        String input = scanner.nextLine();
+        String[] pokemonNames = input.split(",");
+
+        List<Pokemon> pokemons = new ArrayList<>();
+        for (String name : pokemonNames) {
+            name = name.trim();
+            pokemons.add(new Pokemon(name));
+        }
+
+        System.out.println("You entered: " + Arrays.toString(pokemonNames));
+        SafariZone safariZone = new SafariZone(pokemons);
+        safariZone.sortPokemons();
+        safariZone.printFinalSortedPokemons();
     }
 
     private void displayOptions(City city) {
@@ -198,10 +224,6 @@ public class Game {
         // Control returns here after the maze is completed or the player is caught
         // You may want to add any updates to the player's state here
     }
-
-
-
 }
-
 
 
