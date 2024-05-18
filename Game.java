@@ -143,7 +143,7 @@ public class Game {
             "     |                                                  |                            |\n" +
             "     |                                                  |                            |\n" +
             "     |                                                  |                            |\n" +
-            "     |              {Celadon City]---------------[Saffron City]---------[Lavender Town]\n" +
+            "     |              [Celadon City]---------------[Saffron City]---------[Lavender Town]\n" +
             "     |                     |                            |                            |\n" +
             "[Viridian City]            |                            |                            |\n" +
             "     |                     |                            |                            |\n" +
