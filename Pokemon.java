@@ -1,85 +1,185 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package ds_project;
 
-/**
- *
- * @author Taqy
- */
+package project.pikachu; // 3 days commit
+//kena buat current xp and hp 
+//kena buat untuk xp and hp bila level naik
+
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Pokemon {
+    
+    
     private String name;
     private String type;
     private int level;
-    private int hitPoints;
-    private Map<String, Integer> moves;  // Move name to damage mapping
+    private int HitPoints;
+    private int currentHitPoints;
+    private int XP;
+    private int currentXP ;//tambahan current XP
+    private List<String> StrongAgainst;
+    private List<String> WeakAgainst;
+    private Map<String, Integer> Moves1;  // Move name to damage mapping
+     private Map<String, Integer> Moves2;
 
-    public Pokemon(String name, String type, int level, int baseHP) {
+    public Pokemon(String name, String type, int level, int baseHP , int XP ,ArrayList<String> StrongAgainst , ArrayList<String> WeakAgainst , Map <String , Integer> Moves1,Map <String , Integer> Moves2, int currentXP , int currentHitPoints) { // + Xp Strong weak current XP
         this.name = name;
         this.type = type;
         this.level = level;
-        this.hitPoints = baseHP;
-        this.moves = new HashMap<>();
-        initializeMoves();
+        this.HitPoints = baseHP;
+        this.currentHitPoints =currentHitPoints;
+        this.XP =XP;
+        this.currentXP=currentXP;
+        this.StrongAgainst =StrongAgainst;
+        this.WeakAgainst =WeakAgainst;
+        this.Moves1 =Moves1;
+        this.Moves2 =Moves2;
     }
 
     public Pokemon(String name) {
         this.name = name;
     }
-    
-    private void initializeMoves() {
-        // Example: Initialize with two moves
-        moves.put("Tackle", 20); // Basic attack
-        moves.put("Quick Attack", 30); // Faster basic attack
-    }
 
     public void learnMove(String moveName, int damage) {
-        moves.put(moveName, damage);
+        Moves1.put(moveName, damage);
+        Moves2.put(moveName, damage);
     }
 
     public String getName() {
         return name;
     }
+    
+    public void setName( String name) {
+        this.name = name ;
+    }
 
     public String getType() {
         return type;
+    }
+    
+    public void setType ( String type){
+        this.type=type;
     }
 
     public int getLevel() {
         return level;
     }
-
+    
+    public void setLevel(int level) {
+        this.level=level;
+    }
+    
+    public int getXP (){
+        return XP;
+    }
+    
+     public void setXP ( int XP ){
+        this.XP = XP;
+    }
+    
+    public int getcurrentXP (){
+        return currentXP;
+    }
+    
+    public void setcurrentXP ( int currentXP ){  
+        this.currentXP = currentXP;
+    }
+       
+    public List<String> getStrongAgainst (){
+        return new ArrayList<>(StrongAgainst);
+    }
+    
+    public void setStrongAgainst(String StrongAgainst){
+        this.StrongAgainst = new ArrayList<>();    
+    }
+    
+    public List<String>  getWeakAgainst (){
+        return new ArrayList<>(WeakAgainst);
+    }
+    
+     public void setWeakAgainst (String WeakAgainst ){
+        this.WeakAgainst  = new ArrayList<>();
+    }
+    
     public int getHitPoints() {
-        return hitPoints;
+        return HitPoints;
     }
 
     public void setHitPoints(int hp) {
-        this.hitPoints = hp;
+        this.HitPoints = hp;
+    }
+    
+     public int getcurrentHitPoints() {
+        return currentHitPoints;
+    }
+
+    public void setcurrentHitPoints(int currenthitPoints) {
+        this.currentHitPoints = currenthitPoints;
     }
 
     public Map<String, Integer> getMoves() {
-        return new HashMap<>(moves);
+    Map<String, Integer> allMoves = new HashMap<>();
+    allMoves.putAll(Moves1);
+    allMoves.putAll(Moves2);
+    return allMoves;
+}
+    
+     public void setMoves1(Map<String, Integer> Moves1) {
+        this.Moves1 = new HashMap<>();
     }
+    
+     public void setMoves2(Map<String, Integer> Moves2) {
+        this.Moves2 = new HashMap<>();
+        
+        
+    }
+    
 
     public void levelUp() {
         this.level++;
         // Optionally increase hit points and move damage upon leveling up
-        this.hitPoints += 5; // Increment HP by 5 upon leveling up
-        moves.replaceAll((move, damage) -> damage + 2); // Increment damage by 2 for all moves
+        this.currentHitPoints += 5; // Increment HP by 5 upon leveling up
+        this.currentXP += 10;
+        Moves1.replaceAll((move, damage) -> damage + 2); // Increment damage by 2 for all moves
+        Moves2.replaceAll((move, damage) -> damage + 2);
     }
     
     public void performAttack(Pokemon opponent, String move) {
-        if (this.moves.containsKey(move)) {
-            int damage = this.moves.get(move);
-            opponent.setHitPoints(opponent.getHitPoints() - damage);
-            System.out.println(this.name + " used " + move + " causing " + damage + " damage!");
-        } else {
-            System.out.println("Move not found!");
-        }
+    int damage = 0;
+    boolean isSuperEffective = false;
+    boolean isNotEffective = false;
+
+    if (this.Moves1.containsKey(move)) {
+        damage = this.Moves1.get(move);
+    } else if (this.Moves2.containsKey(move)) {
+        damage = this.Moves2.get(move);
+    } else {
+        System.out.println("Move not found!");
+        return;
     }
-}
+
+    isSuperEffective = this.getStrongAgainst().contains(opponent.getType());
+    isNotEffective = this.getWeakAgainst().contains(opponent.getType());
+
+    if (isSuperEffective) {
+        damage *= 1.5;
+        System.out.println(this.name + " used " + move + "!");
+        System.out.println("It's super effective!");
+    } else if (isNotEffective) {
+        damage *= 0.5;
+        System.out.println(this.name + " used " + move + "!");
+        System.out.println("It's not very effective.");
+    } else {
+        System.out.println(this.name + " used " + move + "!");
+    }
+
+    opponent.setHitPoints(opponent.getHitPoints() - damage);
+    System.out.println(opponent.getName() + "'s HP drops " + (isSuperEffective ? "significantly" : "slightly") + ". [" + opponent.getName() + " HP: " + opponent.getcurrentHitPoints() + "/" + opponent.getHitPoints() + "]");
+}      
+        
+    }
+   
 
