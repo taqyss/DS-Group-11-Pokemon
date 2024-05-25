@@ -1,27 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package ds_project;
+package project.pikachu; //3 days commit
+//leader gym kena set balik semua
 
-/**
- *
- * @author Taqy
- */
+
 import java.util.Scanner;
 import java.util.List;
 import java.util.Random;
 import java.util.*;
 
 public class Game {
+
     private GameMap gameMap;
     private Player player;
     private Scanner scanner;
+    private Gym gym;
 
     public Game() {
         this.gameMap = new GameMap();
         this.player = new Player("Pallet Town");  // Starting location
         this.scanner = new Scanner(System.in);
+        this.gym = new Gym("", new ArrayList<>(), 0, new ArrayList<>(), new ArrayList<>(), "" ,0 ,0 ,0 ,0 );
     }
 
     public void start() {
@@ -32,9 +29,90 @@ public class Game {
             City currentCity = gameMap.getCity(player.getLocation());
             System.out.println("You are currently in " + currentCity.getName());
 
+            //set the leader gym 
+            if (currentCity.getName().equals("Pallet Town") || currentCity.getName().equals("Lavender Town")) {
+                gym.setleaderName("- None");
+            } else if (currentCity.getName().equals("Cinnabar Island")) {
+                gym.setleaderName("Blaine");
+                gym.setgymBadges("Volcano Badge");
+                PokemonFactory.createPokemon("Growlithe");
+                PokemonFactory.createPokemon("Ponyta");
+                PokemonFactory.createPokemon("Magmar");
+                PokemonFactory.createPokemon("Rapidash");
+                PokemonFactory.createPokemon("Ninetales");
+                PokemonFactory.createPokemon("Arcanine");
+            } else if (currentCity.getName().equals("Celadon City")) {
+                gym.setleaderName("Erika");
+                gym.setgymBadges("Rainbow Badge");
+                PokemonFactory.createPokemon("Victreebel");
+                PokemonFactory.createPokemon("Tangela");
+                PokemonFactory.createPokemon("Exeggcute");
+                PokemonFactory.createPokemon("Parasect");
+                PokemonFactory.createPokemon("Vileplume");
+                PokemonFactory.createPokemon("Exeggutor");
+
+            } else if (currentCity.getName().equals("Cerulean City")) {
+                gym.setleaderName("Misty");
+                gym.setgymBadges("Cascade Badge");
+                PokemonFactory.createPokemon("Staryu");
+                PokemonFactory.createPokemon("Horsea");
+                PokemonFactory.createPokemon("Goldeen");
+                PokemonFactory.createPokemon("Psyduck");
+                PokemonFactory.createPokemon("Starmie");
+
+            } else if (currentCity.getName().equals("Fuchsia City")) {
+                gym.setleaderName("Koga");
+                gym.setgymBadges("Soul Badge");
+                PokemonFactory.createPokemon("Koffing");
+                PokemonFactory.createPokemon("Muk");
+                PokemonFactory.createPokemon("Arbok");
+                PokemonFactory.createPokemon("Weezing");
+                PokemonFactory.createPokemon("Nidoqueen");
+
+            } else if (currentCity.getName().equals("Pewter City")) {
+                gym.setleaderName("Brock");
+                gym.setgymBadges("Boulder Badge");
+                PokemonFactory.createPokemon("Geodude");
+                PokemonFactory.createPokemon("Onix");
+            } else if (currentCity.getName().equals("Saffron City")) {
+                gym.setleaderName("Sabrina");
+                gym.setgymBadges("Marsh Badge");
+                PokemonFactory.createPokemon("Kadabra");
+                PokemonFactory.createPokemon("Mr.Mime");
+                PokemonFactory.createPokemon("Venomoth");
+                PokemonFactory.createPokemon("Hypno");
+                PokemonFactory.createPokemon("Slowbro");
+                PokemonFactory.createPokemon("Alakazam");
+            } else if (currentCity.getName().equals("Vermilion City")) {
+                gym.setleaderName("Lt.Surge");
+                gym.setgymBadges("Thunder Badge");
+                PokemonFactory.createPokemon("Voltorb");
+                PokemonFactory.createPokemon("Magnemite");
+                PokemonFactory.createPokemon("Pikachu");
+                PokemonFactory.createPokemon("Magneton");
+                PokemonFactory.createPokemon("Raichu");
+                PokemonFactory.createPokemon("Electabuzz");
+
+            } else if (currentCity.getName().equals("Viridian City")) {
+                gym.setleaderName("Giovanni");
+                gym.setgymBadges("Earth Badge");
+                gym.setleaderPokemon(PokemonFactory.createPokemon("Rhyhorn"));
+                gym.setleaderPokemon(PokemonFactory.createPokemon("Dugtrio"));
+                gym.setleaderPokemon(PokemonFactory.createPokemon("Marowak"));
+                gym.setleaderPokemon(PokemonFactory.createPokemon("Nidoqueen"));
+                gym.setleaderPokemon(PokemonFactory.createPokemon("Nidoking"));
+
+            }
+
+            //just nak try jer letak pokemon dulu jadi tak
+            player.addPokemon(PokemonFactory.createPokemon("Pikachu"));
+
             displayOptions(currentCity);
 
+            System.out.println("+----------------------------------------------------------------------+");
+            System.out.print("Your choice: ");
             String choice = scanner.nextLine();
+            System.out.println("+----------------------------------------------------------------------+");
 
             switch (choice) {
                 case "1":
@@ -46,15 +124,31 @@ public class Game {
                 case "3":
                     //fightWildPokemon(currentCity);
                     break;
-                case "4":
+                case "4a":
+                    //displayOptions();
+                    break;
+                case "4b":  // CHANGE 
+                    System.out.println("Your Pokemon:");
+                    for (Pokemon pokemon : player.getTeam()) {
+                        PokemonFactory.ShowPokemon(pokemon);
+                    }
+                    System.out.println("+----------------------------------------------------------------------+");
+                    scanner.nextLine();
+                    break;
+
+                case "4c":  //CHANGE
+                    System.out.println("Your Badges:\n" + player.getBadges());
+                    System.out.println("+----------------------------------------------------------------------+");
+                    scanner.nextLine();
+                    break;
+                case "4d":
                     //displayOptions();
                     break;
                 case "6":
                     if (currentCity.getName().equals("Lavender Town")) {
                         enterPokeMaze();
-                    }
-                    else if (currentCity.getName().equals("Saffron City")) {
-                        startRivalRace(); 
+                    } else if (currentCity.getName().equals("Saffron City")) {
+                        startRivalRace();
                     } else {
                         System.out.println("That option is not available here.");
                     }
@@ -62,6 +156,10 @@ public class Game {
                 case "5":
                     enterSafariZone();
                     break;
+                case "7"://setiap leader 
+                    GymBattle.battle(player, gym);
+                    break;
+
                 case "exit":
                     isRunning = false;
                     break;
@@ -73,19 +171,21 @@ public class Game {
         scanner.close();
     }
 
-    private void displayOptions(City currentCity) {
+    private void displayOptions(City currentCity) { //CHANGE
         System.out.println("[1] Move to another city");
         System.out.println("[2] Open Map of Kanto");
         System.out.println("[3] Fight Wild Pokémon");
         System.out.println("[4] Player Options");
+        System.out.printf("a.Show map   b.Show My Pokemon   c.Show My badges   d.Save and Exit\n");
         System.out.println("[5] Enter Safari Zone");
         if (currentCity.getName().equals("Lavender Town")) {
-            System.out.println("[6] Enter PokeMaze");  
+            System.out.println("[6] Enter PokeMaze");
         }
         if (currentCity.getName().equals("Saffron City")) {
             System.out.println("[6] Rival's Race");  // New option for Rival's Race only in Saffron City
         }
-        System.out.println("[exit] Exit game");
+        System.out.println("[7] Challenge Gym Leader");
+        System.out.println("[exit] Exit game\n");
     }
 
     private void enterSafariZone() {
@@ -105,7 +205,7 @@ public class Game {
         safariZone.sortPokemons();
         safariZone.printFinalSortedPokemons();
     }
-    
+
     private void startRivalRace() {
         String startCity = "Saffron City";
         String destination = getRandomDestination(startCity);
@@ -138,7 +238,6 @@ public class Game {
         return null; // This should not happen if there are valid destinations
     }
 
-
     private void movePlayer(City currentCity) {
         List<City> adjacentCities = currentCity.getAdjacentCities();
         if (adjacentCities.isEmpty()) {
@@ -164,30 +263,29 @@ public class Game {
         }
     }
 
-    
     public void showMap(String currentPlayerLocation) {
-        String map = 
-            "+------------------------------------------------------------------------------------+\n" +
-            "Map of Kanto                                                                        \n\n" +
-            "[Pewter City]-----------------------------------[Cerulean City]----------------------|\n" +
-            "     |                                                  |                            |\n" +
-            "     |                                                  |                            |\n" +
-            "     |                                                  |                            |\n" +
-            "     |                                                  |                            |\n" +
-            "     |              [Celadon City]---------------[Saffron City]---------[Lavender Town]\n" +
-            "     |                     |                            |                            |\n" +
-            "[Viridian City]            |                            |                            |\n" +
-            "     |                     |                            |                            |\n" +
-            "     |                     |                            |                            |\n" +
-            "     |                     |                      [Vermillion City]------------------|\n" +
-            "     |                     |                                                         |\n" +
-            "[Pallet Town]              |                                                         |\n" +
-            "     |                     |                                                         |\n" +
-            "     |               [Fuchsia City]--------------------------------------------------|\n" +
-            "     |                     |                                                          \n" +
-            "     |                     |                                                          \n" +
-            "[Cinnabar Island]----------|                                                          \n" +
-            "+------------------------------------------------------------------------------------+\n";   
+        String map
+                = "+------------------------------------------------------------------------------------+\n"
+                + "Map of Kanto                                                                        \n\n"
+                + "[Pewter City]-----------------------------------[Cerulean City]----------------------|\n"
+                + "     |                                                  |                            |\n"
+                + "     |                                                  |                            |\n"
+                + "     |                                                  |                            |\n"
+                + "     |                                                  |                            |\n"
+                + "     |              [Celadon City]---------------[Saffron City]---------[Lavender Town]\n"
+                + "     |                     |                            |                            |\n"
+                + "[Viridian City]            |                            |                            |\n"
+                + "     |                     |                            |                            |\n"
+                + "     |                     |                            |                            |\n"
+                + "     |                     |                      [Vermillion City]------------------|\n"
+                + "     |                     |                                                         |\n"
+                + "[Pallet Town]              |                                                         |\n"
+                + "     |                     |                                                         |\n"
+                + "     |               [Fuchsia City]--------------------------------------------------|\n"
+                + "     |                     |                                                          \n"
+                + "     |                     |                                                          \n"
+                + "[Cinnabar Island]----------|                                                          \n"
+                + "+------------------------------------------------------------------------------------+\n";
 
         // Replace the current city name with a marker
         map = map.replace("[" + currentPlayerLocation + "]", "#" + currentPlayerLocation.toUpperCase() + "#");
@@ -195,14 +293,13 @@ public class Game {
         System.out.println(map);
     }
 
-
     public void encounterWildPokemon(List<Pokemon> wildPokemon) {
         Random rand = new Random();
         Pokemon pokemon = wildPokemon.get(rand.nextInt(wildPokemon.size())); // Select a random Pokémon
         System.out.println("A wild " + pokemon.getName() + " appears!");
         engageBattle(player, pokemon);  // Assuming you have a method to handle battles
     }
-    
+
     public void engageBattle(Player player, Pokemon wildPokemon) {
         System.out.println("You've encountered a wild " + wildPokemon.getName() + "! HP: " + wildPokemon.getHitPoints());
         System.out.println("Choose an action: 1. Fight 2. Catch 3. Run");
@@ -248,9 +345,11 @@ public class Game {
             System.out.println("No such move!");
         }
     }
-    
+
     private void enterPokeMaze() {
         PokeMaze pokeMaze = new PokeMaze();
         pokeMaze.runMaze();
     }
+
 }
+
