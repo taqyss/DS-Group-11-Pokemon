@@ -1,85 +1,139 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package ds_project;
+package project.pikachu; //3 weeks commit
 
-/**
- *
- * @author Taqy
- */
-import java.util.HashMap;
+import java.util.Scanner;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Pokemon {
-    private String name;
-    private String type;
-    private int level;
-    private int hitPoints;
-    private Map<String, Integer> moves;  // Move name to damage mapping
+public class GymBattle {
 
-    public Pokemon(String name, String type, int level, int baseHP) {
-        this.name = name;
-        this.type = type;
-        this.level = level;
-        this.hitPoints = baseHP;
-        this.moves = new HashMap<>();
-        initializeMoves();
+    private static Scanner scanner = new Scanner(System.in);
+
+    public static void battle(Player player, Gym gym) {
+    if (player.getTeam().isEmpty()) {
+        System.out.println("You have no Pokémon to fight with! Catch or receive one first.");
+        System.out.println("+----------------------------------------------------------------------+");
+        return;
+    }
+    if (player.getLocation().equals("Pallet Town") || player.getLocation().equals("Lavender Town")) {
+        System.out.println("There is no Gym Leader in this town");
+    }
+    if (gym.getleaderPokemon().isEmpty()) {
+        System.out.println("There seems to be an error: Gym Leader " + gym.getleaderName() + " has no Pokémon.");
+        return;
     }
 
-    public Pokemon(String name) {
-        this.name = name;
-    }
-    
-    private void initializeMoves() {
-        // Example: Initialize with two moves
-        moves.put("Tackle", 20); // Basic attack
-        moves.put("Quick Attack", 30); // Faster basic attack
-    }
+    System.out.println("You are about to challenge Gym Leader " + gym.getleaderName() + "!");
+    System.out.println("Prepare yourself for an intense battle! ");
 
-    public void learnMove(String moveName, int damage) {
-        moves.put(moveName, damage);
-    }
+    List<Pokemon> gymTeam = new ArrayList<>(gym.getleaderPokemon()); // Copy the gym leader's team
+    boolean playerWon = true;
 
-    public String getName() {
-        return name;
-    }
+    for (Pokemon gymPokemon : gymTeam) {
+        Pokemon playerPokemon = player.getTeam().get(0); // Assuming the player has Pokémon
 
-    public String getType() {
-        return type;
-    }
+        System.out.println("Your Pokémon: " + playerPokemon.getName() + " - Level: " + playerPokemon.getLevel());
+        System.out.println("+----------------------------------------------------------------------+");
+        System.out.println("Battle Start: Trainer " + player.getName() + " vs. Gym Leader " + gym.getleaderName() + "!");
+        System.out.println(gym.getleaderName() + " sends out " + gymPokemon.getName() + " [Level: " + gymPokemon.getLevel() + "]!");
 
-    public int getLevel() {
-        return level;
-    }
-
-    public int getHitPoints() {
-        return hitPoints;
-    }
-
-    public void setHitPoints(int hp) {
-        this.hitPoints = hp;
-    }
-
-    public Map<String, Integer> getMoves() {
-        return new HashMap<>(moves);
-    }
-
-    public void levelUp() {
-        this.level++;
-        // Optionally increase hit points and move damage upon leveling up
-        this.hitPoints += 5; // Increment HP by 5 upon leveling up
-        moves.replaceAll((move, damage) -> damage + 2); // Increment damage by 2 for all moves
-    }
-    
-    public void performAttack(Pokemon opponent, String move) {
-        if (this.moves.containsKey(move)) {
-            int damage = this.moves.get(move);
-            opponent.setHitPoints(opponent.getHitPoints() - damage);
-            System.out.println(this.name + " used " + move + " causing " + damage + " damage!");
+        if (playerPokemon.getStrongAgainst().containsAll(gymPokemon.getWeakAgainst())) {
+            System.out.println(playerPokemon.getName() + " is sent out! Its " + playerPokemon.getType() + " type is strong against the opponent's " + gymPokemon.getName() + ".");
+        } else if (gymPokemon.getStrongAgainst().containsAll(playerPokemon.getWeakAgainst())) {
+            System.out.println(playerPokemon.getName() + " is sent out! Its " + playerPokemon.getType() + " type is weak against the opponent's " + gymPokemon.getName() + ".");
         } else {
-            System.out.println("Move not found!");
+            System.out.println(playerPokemon.getName() + " is sent out! Its " + playerPokemon.getType() + " type is normal against the opponent's " + gymPokemon.getName() + ".");
+        }
+
+        // Battle loop
+        int round = 1;
+        while (playerPokemon.getcurrentHitPoints() > 0 && gymPokemon.getcurrentHitPoints() > 0) {
+            System.out.println("Round " + round + ":");
+            System.out.println(playerPokemon.getName() + "'s Moves:");
+            Map<String, Integer> moves = playerPokemon.getMoves();
+            int index = 1;
+            for (String move : moves.keySet()) {
+                System.out.println(index + ". " + move);
+                index++;
+            }
+
+            System.out.print("Which move will " + playerPokemon.getName() + " use?\nYour choice: ");
+            int selectedMoveIndex = scanner.nextInt();
+            String selectedMove = playerPokemon.getMoves().keySet().toArray(new String[0])[selectedMoveIndex - 1];
+            System.out.println("+----------------------------------------------------------------------+");
+
+            attack(playerPokemon, gymPokemon, selectedMove);
+            if (gymPokemon.getcurrentHitPoints() <= 0) {
+                System.out.println(gymPokemon.getName() + " fainted!");
+                playerPokemon.setcurrentXP(40); // Example XP gain
+                System.out.println(playerPokemon.getName() + " gained 40 XP.");
+                System.out.println(playerPokemon.getName() + " [XP: " + playerPokemon.getcurrentXP() + "/" + playerPokemon.getXP() + "]");
+                break;
+            }
+
+            // Gym Leader's turn
+            System.out.println("+----------------------------------------------------------------------+");
+            String gymMove = gymPokemon.getMoves().keySet().iterator().next(); // Gym Pokemon's first move
+            attack(gymPokemon, playerPokemon, gymMove);
+
+            if (playerPokemon.getcurrentHitPoints() <= 0) {
+                System.out.println(playerPokemon.getName() + " fainted!");
+                playerWon = false;
+                break;
+            }
+
+            round++;
+        }
+
+        if (!playerWon) {
+            break; // Exit loop if player lost
         }
     }
+
+    if (playerWon) {
+        System.out.println("You defeated Gym Leader " + gym.getleaderName() + " and earned the " + gym.getgymBadges() + "!");
+        player.addBadge(gym.getgymBadges());
+        System.out.println("+----------------------------------------------------------------------+");
+    } else {
+        System.out.println("You were defeated by Gym Leader " + gym.getleaderName() + ".");
+        System.out.println("+----------------------------------------------------------------------+");
+    }
 }
+
+
+    
+    
+   
+
+    
+
+    private static void attack(Pokemon attacker, Pokemon defender, String move) {
+        Map<String, Integer> moves = attacker.getMoves();
+        int damage = moves.get(move);
+        boolean isSuperEffective = attacker.getStrongAgainst().contains(defender.getType());
+        boolean isNotEffective = attacker.getWeakAgainst().contains(defender.getType());
+
+        if (isSuperEffective) {
+            damage *= 1.5;
+            System.out.println(attacker.getName() + " used " + move + "!");
+            System.out.println("It's super effective!");
+        } else if (isNotEffective) {
+            damage *= 0.5;
+            System.out.println(attacker.getName() + " used " + move + "!");
+            System.out.println("It's not very effective.");
+        } else {
+            System.out.println(attacker.getName() + " used " + move + "!");
+        }
+
+        defender.setcurrentHitPoints(defender.getcurrentHitPoints() - damage);
+        System.out.println(defender.getName() + "'s HP drops " + (isSuperEffective ? "significantly" : "slightly") + ". [" + defender.getName() + " HP: " + defender.getcurrentHitPoints() + "/" + defender.getHitPoints() + "]");
+    }
+}
+
+
+/*
+        int damage = attacker.getMoves().values().iterator().next(); // Simple logic, taking the first move's damage
+        System.out.println(attacker.getName() + " attacks " + defender.getName() + " for " + damage + " damage!");
+        defender.setHitPoints(defender.getHitPoints() - damage);
+ */
 
