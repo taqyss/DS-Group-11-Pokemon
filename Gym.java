@@ -20,6 +20,7 @@ public class Gym {
     private int leadercurrentHitPoints;
     private int leaderXP;
     private int leadercurrentXP;
+
     
 
     public Gym(String leaderName , List<Pokemon> leaderPokemon , int leaderlevel , List<String> leaderStrongAgainst , List<String>  leaderWeakAgainst , String gymBadges , int leaderHitPoints , int leaderXP , int leadercurrentHitPoints , int leadercurrentXP ) {
@@ -33,6 +34,15 @@ public class Gym {
         this.leadercurrentXP=leadercurrentXP;
         this.leaderHitPoints=leaderHitPoints;
         this.leadercurrentHitPoints=leadercurrentHitPoints;
+    }
+    
+    public void setleaderPokemon(List<Pokemon> pokemon) {
+        this.leaderPokemon = pokemon;
+    }
+    
+    // Getter methods
+    public List<Pokemon> getleaderPokemon() {
+        return leaderPokemon;
     }
 
     public void addPokemon(Pokemon pokemon) {
@@ -56,9 +66,9 @@ public class Gym {
     }
     
 
-    public List<Pokemon> getleaderPokemon() {
+    /*public List<Pokemon> getleaderPokemon() {
         return new ArrayList<>(leaderPokemon);
-    }
+    }*/
     
      public void setleaderPokemon(Pokemon pokemon) {
      this.leaderPokemon.add(pokemon);
