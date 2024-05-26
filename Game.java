@@ -1,4 +1,5 @@
-package project.pikachu; //3 days commit
+package project.pikachu; // 3 days commit
+// leader Gym kena set balik semua
 
 import java.util.Scanner;
 import java.util.List;
@@ -102,6 +103,7 @@ public class Game {
 
             }
 
+// just nak try jer letak pokemon dulu jadi tak
             player.addPokemon(PokemonFactory.createPokemon("Pikachu"));
 
             displayOptions(currentCity);
@@ -349,3 +351,4 @@ public class Game {
     }
 
 }
+
