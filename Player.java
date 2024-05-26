@@ -1,23 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package ds_project;
 
-/**
- *
- * @author Taqy
- */
+package project.pikachu; //3 weeks commit
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Player {
-    private String name;
+public class Player { //CHANGES
+    
+     private String name;
     private String location;  // Current city location
-    private List<Pokemon> team;
-    private Set<String> badges;
+    private List<Pokemon> team; //pokemon dlm team 
+    private Set<String> badges = new HashSet<>();
 
     public Player(String startingLocation) {
         this.location = startingLocation;
@@ -48,7 +42,13 @@ public class Player {
         return new ArrayList<>(team);
     }
 
-    public Set<String> getBadges() {
+    public Set<String> getBadges() {   //CHANGES
+        if (badges.isEmpty()) {
+        Set<String> noBadges = new HashSet<>();
+        noBadges.add("- None");
+        return noBadges;
+    }
+
         return new HashSet<>(badges);
     }
 
@@ -59,6 +59,5 @@ public class Player {
     public void setName(String name) {
         this.name = name;
     }
+    
 }
-
-
