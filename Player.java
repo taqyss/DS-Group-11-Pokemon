@@ -60,4 +60,13 @@ public class Player { //CHANGES
         this.name = name;
     }
     
+
+    public void CatchPokemon(Pokemon wild) {
+        if (getTeam().size() >=0 && getTeam().size() <6) {
+            addPokemon(wild);
+        } else {
+            System.out.println("You already have 6 Pokemon");
+        }
+    }
+    
 }
