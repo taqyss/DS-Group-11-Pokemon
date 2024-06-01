@@ -172,6 +172,7 @@ public class Game {
                     System.out.print("Please choose your pokemon: ");
                     Scanner scanwild = new Scanner (System.in);
                     int choosepokewild = scanner.nextInt()-1;
+                    scanner.nextLine();
 
                     if (choosepokewild >= 0 && choosepokewild < player.getTeam().size()) {
                         Pokemon chosenPokemon = player.getTeam().get(choosepokewild);
@@ -231,6 +232,7 @@ public class Game {
                     System.out.print("Please choose your pokemon: ");
                     Scanner scangym = new Scanner (System.in);
                     int choosepokegym = scangym.nextInt()-1;
+                    scanner.nextLine();
 
                     if (choosepokegym >= 0 && choosepokegym  < player.getTeam().size()) {
                         Pokemon chosenPokemon = player.getTeam().get(choosepokegym );
