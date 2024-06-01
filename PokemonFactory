@@ -1,4 +1,4 @@
-//revolution 
+
 package project.pikachu;
 
 import java.util.HashMap;
@@ -7,510 +7,611 @@ import java.util.List;
 import java.util.Map;
 
 public class PokemonFactory {
-    
+
     private static final HashMap<String, Pokemon> callpokemon = new HashMap<String, Pokemon>();
-    
+
     static {
 
-
-        // list of pokemon
-       Pokemon bulbasaur = new Pokemon(
-            "Bulbasaur", 
-            "Grass/Poison", 
-            1, 
-            45, 
-            20, 
-            new ArrayList<>(List.of("Fighting", "Water", "Grass", "Fairy", "Electric")),
-            new ArrayList<>(List.of("Flying", "Fire", "Psychic", "Ice")),
-            new HashMap <>(Map.of("Tackle", 5)),
-            new HashMap <>(Map.of("Vine Whip", 10)),
-            0, 
-            45
+        // list of wildpokemon--------------------------------------------------------------------------------------------------------------------------------------------------------
+        Pokemon bulbasaur = new Pokemon(
+                "Bulbasaur",
+                "Grass/Poison",
+                1,
+                100,
+                100,
+                new ArrayList<>(List.of("Fighting", "Water", "Grass", "Fairy", "Electric")),
+                new ArrayList<>(List.of("Flying", "Fire", "Psychic", "Ice")),
+                new HashMap<>(Map.of("Tackle", 5)),
+                new HashMap<>(Map.of("Vine Whip", 10)),
+                0,
+                100
         );
-Pokemon ivysaur = new Pokemon("Ivysaur", "Grass/Poison", 1, 60, 40, 
-    new ArrayList<>(List.of("Fighting", "Water", "Grass", "Fairy", "Electric")),
-    new ArrayList<>(List.of("Flying", "Fire", "Psychic", "Ice")), 
-         new HashMap <>(Map.of("Tacke", 5)),
-            new HashMap <>(Map.of("RazorLeaf", 10)),
-    0,60);
-
-Pokemon venusaur = new Pokemon("Venusaur", "Grass/Poison", 1, 80, 40, 
-    new ArrayList<>(List.of("Fighting", "Water", "Grass", "Fairy", "Electric")),
-    new ArrayList<>(List.of("Flying", "Fire", "Psychic", "Ice")), 
-        new HashMap <>(Map.of("Tackle", 5)),
-            new HashMap <>(Map.of("SolarBeam", 10)),
-    0, 80);
-
-
-
-Pokemon charmander = new Pokemon("Charmander", "Fire", 1, 39, 20, 
-    new ArrayList<>(List.of("Bug", "Steel", "Fire", "Grass", "Ice", "Fairy")),
-    new ArrayList<>(List.of("Ground", "Rock", "Water")), 
-         new HashMap <>(Map.of("Scratch", 5)),
-            new HashMap <>(Map.of("Ember", 10)),
-    0, 39);
-   
-Pokemon charmeleon = new Pokemon("Charmeleon", "Fire", 1, 58, 40, 
-    new ArrayList<>(List.of("Bug", "Steel", "Fire", "Grass", "Ice", "Fairy")),
-    new ArrayList<>(List.of("Ground", "Rock", "Water")), 
-        new HashMap <>(Map.of("Scratch", 5)),
-            new HashMap <>(Map.of("Flamethrower", 10)),
-    0, 58);
-
-Pokemon charizard = new Pokemon("Charizard", "Fire/Flying", 1, 78, 40, 
-    new ArrayList<>(List.of("Fighting", "Bug", "Steel", "Fire", "Grass", "Fairy")),
-    new ArrayList<>(List.of("Rock", "Water", "Electric")), 
-         new HashMap <>(Map.of("Scratch", 5)),
-            new HashMap <>(Map.of("FireSpin", 10)),
-    0, 78);
-    
-
-
-
-
-Pokemon squirtle = new Pokemon("Squirtle", "Water", 1, 44, 20, 
-    new ArrayList<>(List.of("Steel", "Fire", "Water", "Ice")),
-    new ArrayList<>(List.of("Grass", "Electric")), 
-          new HashMap <>(Map.of("Tackle", 5)),
-            new HashMap <>(Map.of("Bubble", 10)),
-    0, 44);
-
-Pokemon wartorle = new Pokemon("Wartortle", "Water", 1, 59, 40, 
-    new ArrayList<>(List.of("Steel", "Fire", "Water", "Ice")),
-    new ArrayList<>(List.of("Grass", "Electric")), 
-        new HashMap <>(Map.of("Tackle", 5)),
-            new HashMap <>(Map.of("WaterGun", 10)),
-    0, 59);
-
-Pokemon blastoise = new Pokemon("Blastoise", "Water", 1, 79, 40, 
-    new ArrayList<>(List.of("Steel", "Fire", "Water", "Ice")),
-    new ArrayList<>(List.of("Grass", "Electric")), 
-        new HashMap <>(Map.of("Tackle", 5)),
-            new HashMap <>(Map.of("HydroPump", 10)),
-    0, 79);
-  
-
-
-
-Pokemon caterpie = new Pokemon("Caterpie", "Bug", 1, 45, 20, 
-    new ArrayList<>(List.of("Fighting", "Ground", "Grass")),
-    new ArrayList<>(List.of("Flying", "Rock", "Fire")), 
-         new HashMap <>(Map.of("Tackle", 5)),
-            new HashMap <>(Map.of("BugBite", 10)),
-    0, 45);
-
-Pokemon metapod = new Pokemon("Metapod", "Bug", 1, 50, 40, 
-    new ArrayList<>(List.of("Fighting", "Ground", "Grass")),
-    new ArrayList<>(List.of("Flying", "Rock", "Fire")), 
-        new HashMap <>(Map.of("Tackle", 5)),
-            new HashMap <>(Map.of("Slash", 10)),
-    0, 50);
-
-Pokemon butterfree = new Pokemon("Butterfree", "Bug/Flying", 1, 60, 40, 
-    new ArrayList<>(List.of("Fighting", "Bug", "Grass")),
-    new ArrayList<>(List.of("Flying", "Rock", "Fire", "Electric", "Ice")), 
-        new HashMap <>(Map.of("Tackle", 5)),
-            new HashMap <>(Map.of("BugBuzz", 10)),
-    0, 60);
-
-
-
-
-
-Pokemon weedle = new Pokemon("Weedle", "Bug/Poison", 1, 40, 20, 
-    new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")),
-    new ArrayList<>(List.of("Flying", "Rock", "Fire", "Psychic")), 
-        new HashMap <>(Map.of("Tackle", 5)),
-            new HashMap <>(Map.of("PoisonSting", 10)),
-    0, 40);
-
-Pokemon kakuna = new Pokemon("Kakuna", "Bug/Poison", 1, 45, 40, 
-    new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")),
-    new ArrayList<>(List.of("Flying", "Rock", "Fire", "Psychic")), 
-        new HashMap <>(Map.of("Tackle", 5)),
-            new HashMap <>(Map.of("Slash", 10)),
-    0, 45);
-
-Pokemon beedrill = new Pokemon("Beedrill", "Bug/Poison", 1, 65, 40, 
-    new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")),
-    new ArrayList<>(List.of("Flying", "Rock", "Fire", "Psychic")), 
-        new HashMap <>(Map.of("Tackle", 5)),
-            new HashMap <>(Map.of("BugBuzz", 10)),
-    0, 65);
-
-
-
-
-Pokemon pidgey = new Pokemon("Pidgey", "Normal/Flying", 1, 40, 20, 
-    new ArrayList<>(List.of("Bug", "Grass")),
-    new ArrayList<>(List.of("Rock", "Electric", "Ice")), 
-         new HashMap <>(Map.of("Tackle", 5)),
-            new HashMap <>(Map.of("Slash", 10)),
-    0, 40);
-
-Pokemon pidgeotto = new Pokemon("Pidgeotto", "Normal/Flying", 1, 63, 40, 
-    new ArrayList<>(List.of("Bug", "Grass")),
-    new ArrayList<>(List.of("Rock", "Electric", "Ice")), 
-        new HashMap <>(Map.of("Tackle", 5)),
-            new HashMap <>(Map.of("WingAttack", 10)),
-    0, 63);
-
-Pokemon pidgeot = new Pokemon("Pidgeot", "Normal/Flying", 1, 83, 40, 
-    new ArrayList<>(List.of("Bug", "Grass")),
-    new ArrayList<>(List.of("Rock", "Electric", "Ice")), 
-        new HashMap <>(Map.of("Tackle", 5)),
-            new HashMap <>(Map.of("Hurricane", 10)),
-    0, 83);
-
-
-
-
-Pokemon rattata = new Pokemon("Rattata", "Normal", 1, 30, 30, 
-    new ArrayList<>(),
-    new ArrayList<>(List.of("Fighting")), 
-         new HashMap <>(Map.of("Bite", 5)),
-            new HashMap <>(Map.of("Slash", 10)),
-    0, 30);
-
-Pokemon raticate = new Pokemon("Raticate", "Normal", 1, 55, 30, 
-    new ArrayList<>(),
-    new ArrayList<>(List.of("Fighting")), 
-         new HashMap <>(Map.of("Bite", 5)),
-            new HashMap <>(Map.of("HyperFang", 10)),
-    0, 55);
-
-
-
-
-Pokemon spearow = new Pokemon("Spearow", "Normal/Flying", 1, 40, 30, 
-    new ArrayList<>(List.of("Bug", "Grass")),
-    new ArrayList<>(List.of("Rock", "Electric", "Ice")), 
-         new HashMap <>(Map.of("Peck", 5)),
-            new HashMap <>(Map.of("WingAttack", 10)),
-    0, 40);
-
-Pokemon fearow = new Pokemon("Fearow", "Normal/Flying", 1, 65, 30, 
-    new ArrayList<>(List.of("Bug", "Grass")),
-    new ArrayList<>(List.of("Rock", "Electric", "Ice")), 
-        new HashMap <>(Map.of("Peck", 5)),
-            new HashMap <>(Map.of("DrillPeck", 10)),
-    0, 65);
-
-
-
-
-Pokemon ekans = new Pokemon("Ekans", "Poison", 1, 35, 30, 
-    new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")),
-    new ArrayList<>(List.of("Ground", "Psychic")), 
-         new HashMap <>(Map.of("Bite", 5)),
-            new HashMap <>(Map.of("PoisonSting", 10)),
-    0, 35);
-
-Pokemon arbok = new Pokemon("Arbok", "Poison", 1, 60, 30, 
-    new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")),
-    new ArrayList<>(List.of("Ground", "Psychic")), 
-        new HashMap <>(Map.of("Bite", 5)),
-            new HashMap <>(Map.of("PoisonSting", 10)),
-    0, 60);
-
-
-
-
-Pokemon pikachu = new Pokemon("Pikachu", "Electric", 1, 500, 30, 
-    new ArrayList<>(List.of("Flying", "Steel", "Electric")),
-    new ArrayList<>(List.of("Ground")), 
-        new HashMap <>(Map.of("QuickAttack", 5)),
-            new HashMap <>(Map.of("ThunderShock", 10)),
-    0, 100);
-
-Pokemon raichu = new Pokemon("Raichu", "Electric", 1, 60, 30, 
-    new ArrayList<>(List.of("Flying", "Steel", "Electric")),
-    new ArrayList<>(List.of("Ground")), 
-        new HashMap <>(Map.of("QuickAttack", 5)),
-            new HashMap <>(Map.of("ThunderBolt", 10)),
-    0, 60);
-
-
-
-
-
-Pokemon sandshrew = new Pokemon("Sandshrew", "Ground", 1, 50, 30, 
-    new ArrayList<>(List.of("Poison", "Rock")),
-    new ArrayList<>(List.of("Water", "Grass", "Ice")), 
-        new HashMap <>(Map.of("Scratch", 5)),
-            new HashMap <>(Map.of("Slash", 10)),
-    0, 50);
-
-Pokemon sandslash = new Pokemon("Sandslash", "Ground", 1, 75, 30, 
-    new ArrayList<>(List.of("Poison", "Rock")),
-    new ArrayList<>(List.of("Water", "Grass", "Ice")), 
-        new HashMap <>(Map.of("Scratch", 5)),
-            new HashMap <>(Map.of("EarthPower", 10)),
-    0, 75);
-
-
-
-
-Pokemon nidoranF = new Pokemon("NidoranF", "Poison", 1, 55, 20, 
-    new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")),
-    new ArrayList<>(List.of("Ground", "Psychic")), 
-        new HashMap <>(Map.of("Cut", 5)),
-            new HashMap <>(Map.of("PoisonSting", 10)),
-    0, 55);
-
-Pokemon nidorina = new Pokemon("Nidorina", "Poison", 1, 70, 40, 
-    new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")),
-    new ArrayList<>(List.of("Ground", "Psychic")), 
-        new HashMap <>(Map.of("Cut", 5)),
-            new HashMap <>(Map.of("PoisonSting", 10)),
-    0, 70);
-
-Pokemon nidoqueen = new Pokemon("Nidoqueen", "Poison/Ground", 1, 90, 40, 
-    new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Rock", "Fairy")),
-    new ArrayList<>(List.of("Water", "Ice", "Ground", "Psychic")), 
-        new HashMap <>(Map.of("Cut", 5)),
-            new HashMap <>(Map.of("BodySlam", 10)),
-    0, 90);
-
-
-
-
-Pokemon nidoranM = new Pokemon("NidoranM", "Poison", 1, 46, 20, 
-    new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")),
-    new ArrayList<>(List.of("Ground", "Psychic")), 
-        new HashMap <>(Map.of("Cut", 5)),
-            new HashMap <>(Map.of("PoisonSting", 10)),
-    0, 46);
-
-Pokemon nidorino = new Pokemon("Nidorino", "Poison", 1, 61, 40, 
-    new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")),
-    new ArrayList<>(List.of("Ground", "Psychic")), 
-        new HashMap <>(Map.of("Cut", 5)),
-            new HashMap <>(Map.of("PoisonSting", 10)),
-    0, 61);
-
-Pokemon nidoking = new Pokemon("Nidoking", "Poison/Ground", 1, 81, 40, 
-    new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Rock", "Fairy")),
-    new ArrayList<>(List.of("Water", "Ice", "Ground", "Psychic")), 
-        new HashMap <>(Map.of("Cut", 5)),
-            new HashMap <>(Map.of("EarthPower", 10)),
-    0, 81);
-
-
-
-
-      Pokemon clefairy = new Pokemon("Clefairy", "Fairy", 1, 70, 38, 
-    new ArrayList<>(List.of("Fighting", "Bug", "Dark")), 
-    new ArrayList<>(List.of("Poison", "Steel")), 
-              new HashMap <>(Map.of("DoubleSlap", 5)),
-            new HashMap <>(Map.of("BodySlam", 10)),
-    0, 70);
-
-Pokemon clefable = new Pokemon("Clefable", "Fairy", 1, 95, 73, 
-    new ArrayList<>(List.of("Fighting", "Bug", "Dark")), 
-    new ArrayList<>(List.of("Poison", "Steel")), 
-        new HashMap <>(Map.of("DoubleSlap", 5)),
-            new HashMap <>(Map.of("Earthquake", 10)),
-    0, 95);
-
-
-
-
-Pokemon vulpix = new Pokemon("Vulpix", "Fire", 1, 38, 40, 
-    new ArrayList<>(List.of("Bug", "Steel", "Fire", "Grass", "Ice", "Fairy")), 
-    new ArrayList<>(List.of("Ground", "Rock", "Water")), 
-        new HashMap <>(Map.of("Bite", 5)),
-            new HashMap <>(Map.of("Ember", 10)),
-    0, 38);
-
-Pokemon ninetales = new Pokemon("Ninetales", "Fire", 1, 73, 73, 
-    new ArrayList<>(List.of("Bug", "Steel", "Fire", "Grass", "Ice", "Fairy")), 
-    new ArrayList<>(List.of("Ground", "Rock", "Water")), 
-        new HashMap <>(Map.of("Bite", 5)),
-            new HashMap <>(Map.of("FireSpin", 10)),
-    0, 73);
-
-
-
-
-Pokemon jigglypuff = new Pokemon("Jigglypuff", "Normal/Fairy", 1, 115, 35, 
-    new ArrayList<>(List.of("Bug", "Dark")), 
-    new ArrayList<>(List.of("Poison", "Steel")), 
-        new HashMap <>(Map.of("Scratch", 5)),
-            new HashMap <>(Map.of("Slash", 10)),
-    0, 115);
-
-Pokemon wigglytuff = new Pokemon("Wigglytuff", "Normal/Fairy", 1, 140, 140, 
-    new ArrayList<>(List.of("Bug", "Dark")), 
-    new ArrayList<>(List.of("Poison", "Steel")), 
-        new HashMap <>(Map.of("Pound", 5)),
-            new HashMap <>(Map.of("EarthPower", 10)),
-    0, 140);
-
-
-
-
-Pokemon zubat = new Pokemon("Zubat", "Poison/Flying", 1, 40, 40, 
-    new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")), 
-    new ArrayList<>(List.of("Ground")), 
-        new HashMap <>(Map.of("Bite", 5)),
-            new HashMap <>(Map.of("Acid", 10)),
-    0, 40);
-
-Pokemon golbat = new Pokemon("Golbat", "Poison/Flying", 1, 75, 75, 
-    new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")), 
-    new ArrayList<>(List.of("Ground")), 
-        new HashMap <>(Map.of("Bite", 5)),
-            new HashMap <>(Map.of("PoisonJab", 10)),
-    0, 75);
-
-
-
-
-Pokemon oddish = new Pokemon("Oddish", "Grass/Poison", 1, 45, 45, 
-    new ArrayList<>(List.of("Fighting", "Water", "Grass", "Electric", "Fairy")), 
-    new ArrayList<>(List.of("Flying", "Fire", "Psychic", "Ice")), 
-        new HashMap <>(Map.of("Scratch", 5)),
-            new HashMap <>(Map.of("VineWhip", 10)),
-    0, 45);
-
-Pokemon gloom = new Pokemon("Gloom", "Grass/Poison", 1, 60, 60, 
-    new ArrayList<>(List.of("Fighting", "Water", "Grass", "Electric", "Fairy")), 
-    new ArrayList<>(List.of("Flying", "Fire", "Psychic", "Ice")), 
-        new HashMap <>(Map.of("Scratch", 5)),
-            new HashMap <>(Map.of("PetalDance", 10)),
-    0, 60);
-
-Pokemon vileplume = new Pokemon("Vileplume", "Grass/Poison", 1, 75, 75, 
-    new ArrayList<>(List.of("Fighting", "Water", "Grass", "Electric", "Fairy")), 
-    new ArrayList<>(List.of("Flying", "Fire", "Psychic", "Ice")), 
-        new HashMap <>(Map.of("Scratch", 5)),
-            new HashMap <>(Map.of("SolarBeam", 10)),
-    0, 75);
-
-
-
-
-Pokemon paras = new Pokemon("Paras", "Bug/Grass", 1, 35, 45, 
-    new ArrayList<>(List.of("Fighting", "Ground", "Water", "Grass", "Electric")), 
-    new ArrayList<>(List.of("Flying", "Poison", "Rock", "Bug", "Fire", "Ice")), 
-        new HashMap <>(Map.of("Scratch", 5)),
-            new HashMap <>(Map.of("Slash", 10)),
-    0, 35);
-
-Pokemon parasect = new Pokemon("Parasect", "Bug/Grass", 1, 60, 60, 
-    new ArrayList<>(List.of("Fighting", "Ground", "Water", "Grass", "Electric")), 
-    new ArrayList<>(List.of("Flying", "Poison", "Rock", "Bug", "Fire", "Ice")), 
-        new HashMap <>(Map.of("Scratch", 5)),
-            new HashMap <>(Map.of("Slash", 10)),
-    0, 60);
-
-
-
-
-Pokemon venonat = new Pokemon("Venonat", "Bug/Poison", 1, 60, 60, 
-    new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")), 
-    new ArrayList<>(List.of("Flying", "Rock", "Fire", "Psychic")), 
-        new HashMap <>(Map.of("Cut", 5)),
-            new HashMap <>(Map.of("PoisonSting", 10)),
-    0, 60);
-
-Pokemon venomoth = new Pokemon("Venomoth", "Bug/Poison", 1, 70, 70, 
-    new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")), 
-    new ArrayList<>(List.of("Flying", "Rock", "Fire", "Psychic")), 
-        new HashMap <>(Map.of("Cut", 5)),
-            new HashMap <>(Map.of("PoisonJab", 10)),
-    0, 70);
-
-
-
-
-Pokemon diglett = new Pokemon("Diglett", "Ground", 1, 10, 10, 
-    new ArrayList<>(List.of("Poison", "Rock")), 
-    new ArrayList<>(List.of("Water", "Grass", "Ice")), 
-        new HashMap <>(Map.of("Dig", 5)),
-            new HashMap <>(Map.of("Slash", 10)),
-    0, 10);
-
-Pokemon dugtrio = new Pokemon("Dugtrio", "Ground", 1, 35, 35, 
-    new ArrayList<>(List.of("Poison", "Rock")), 
-    new ArrayList<>(List.of("Water", "Grass", "Ice")), 
-         new HashMap <>(Map.of("Dig", 5)),
-            new HashMap <>(Map.of("EarthQuake", 10)),
-    0, 35);
-
-
-
-
-Pokemon meowth = new Pokemon("Meowth", "Normal", 1, 40, 40, 
-    new ArrayList<>(), 
-    new ArrayList<>(List.of("Fighting")), 
-         new HashMap <>(Map.of("Scratch", 5)),
-            new HashMap <>(Map.of("Slash", 10)),
-    0, 40);
-
-Pokemon persian = new Pokemon("Persian", "Normal", 1, 65, 65, 
-    new ArrayList<>(), 
-    new ArrayList<>(List.of("Fighting")), 
-         new HashMap <>(Map.of("Headbutt", 5)),
-            new HashMap <>(Map.of("DoubleKick", 10)),
-    0, 65);
-
-
-
-
-Pokemon psyduck = new Pokemon("Psyduck", "Water", 1, 50, 50, 
-    new ArrayList<>(List.of("Steel", "Fire", "Water", "Ice")), 
-    new ArrayList<>(List.of("Grass", "Electric")), 
-         new HashMap <>(Map.of("Headbutt", 5)),
-            new HashMap <>(Map.of("Bubble", 10)),
-    0, 50);
-
-     Pokemon golduck = new Pokemon("Golduck", "Water", 1, 80, 50, 
-    new ArrayList<>(List.of("Steel", "Fire", "Water", "Ice")), 
-    new ArrayList<>(List.of("Grass", "Electric")), 
-             new HashMap <>(Map.of("Headbutt", 5)),
-            new HashMap <>(Map.of("HydroPump", 10)),
-    0, 80);
-
-     
-     
-     
-Pokemon mankey = new Pokemon("Mankey", "Fighting", 1, 40, 40, 
-    new ArrayList<>(List.of("Rock", "Bug", "Dark")), 
-    new ArrayList<>(List.of("Flying", "Psychic", "Fairy")), 
-        new HashMap <>(Map.of("LowKick", 5)),
-            new HashMap <>(Map.of("DoubleKick", 10)),
-    0, 40);
-
-Pokemon primeape = new Pokemon("Primeape", "Fighting", 1, 65, 65, 
-    new ArrayList<>(List.of("Rock", "Bug", "Dark")), 
-    new ArrayList<>(List.of("Flying", "Psychic", "Fairy")), 
-         new HashMap <>(Map.of("LowKick", 5)),
-            new HashMap <>(Map.of("KarateChop", 10)),
-    0, 65);
-
-
-
-
-Pokemon growlithe = new Pokemon("Growlithe", "Fire", 1, 55, 55, 
-    new ArrayList<>(List.of("Bug", "Steel", "Fire", "Grass", "Ice", "Fairy")), 
-    new ArrayList<>(List.of("Ground", "Rock", "Water")), 
-         new HashMap <>(Map.of("Bite", 5)),
-            new HashMap <>(Map.of("Ember", 10)),
-    0, 55);
-
-Pokemon arcanine = new Pokemon("Arcanine", "Fire", 1, 90, 90, 
-    new ArrayList<>(List.of("Bug", "Steel", "Fire", "Grass", "Ice", "Fairy")), 
-    new ArrayList<>(List.of("Ground", "Rock", "Water")), 
-         new HashMap <>(Map.of("Bite", 5)),
-            new HashMap <>(Map.of("FlameThrower", 10)),
-    0, 90);
-
-
-
-
-
+        Pokemon ivysaur = new Pokemon("Ivysaur", "Grass/Poison", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Water", "Grass", "Fairy", "Electric")),
+                new ArrayList<>(List.of("Flying", "Fire", "Psychic", "Ice")),
+                new HashMap<>(Map.of("Tacke", 5)),
+                new HashMap<>(Map.of("RazorLeaf", 10)),
+                0, 100);
+
+        Pokemon venusaur = new Pokemon("Venusaur", "Grass/Poison", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Water", "Grass", "Fairy", "Electric")),
+                new ArrayList<>(List.of("Flying", "Fire", "Psychic", "Ice")),
+                new HashMap<>(Map.of("Tackle", 5)),
+                new HashMap<>(Map.of("SolarBeam", 10)),
+                0, 100);
+
+        Pokemon charmander = new Pokemon("Charmander", "Fire", 1, 100, 100,
+                new ArrayList<>(List.of("Bug", "Steel", "Fire", "Grass", "Ice", "Fairy")),
+                new ArrayList<>(List.of("Ground", "Rock", "Water")),
+                new HashMap<>(Map.of("Scratch", 5)),
+                new HashMap<>(Map.of("Ember", 10)),
+                0, 100);
+
+        Pokemon charmeleon = new Pokemon("Charmeleon", "Fire", 1, 100, 100,
+                new ArrayList<>(List.of("Bug", "Steel", "Fire", "Grass", "Ice", "Fairy")),
+                new ArrayList<>(List.of("Ground", "Rock", "Water")),
+                new HashMap<>(Map.of("Scratch", 5)),
+                new HashMap<>(Map.of("Flamethrower", 10)),
+                0, 100);
+
+        Pokemon charizard = new Pokemon("Charizard", "Fire/Flying", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Bug", "Steel", "Fire", "Grass", "Fairy")),
+                new ArrayList<>(List.of("Rock", "Water", "Electric")),
+                new HashMap<>(Map.of("Scratch", 5)),
+                new HashMap<>(Map.of("FireSpin", 10)),
+                0, 100);
+
+        Pokemon squirtle = new Pokemon("Squirtle", "Water", 1, 100, 100,
+                new ArrayList<>(List.of("Steel", "Fire", "Water", "Ice")),
+                new ArrayList<>(List.of("Grass", "Electric")),
+                new HashMap<>(Map.of("Tackle", 5)),
+                new HashMap<>(Map.of("Bubble", 10)),
+                0, 100);
+
+        Pokemon wartorle = new Pokemon("Wartortle", "Water", 1, 100, 100,
+                new ArrayList<>(List.of("Steel", "Fire", "Water", "Ice")),
+                new ArrayList<>(List.of("Grass", "Electric")),
+                new HashMap<>(Map.of("Tackle", 5)),
+                new HashMap<>(Map.of("WaterGun", 10)),
+                0, 100);
+
+        Pokemon blastoise = new Pokemon("Blastoise", "Water", 1, 100, 100,
+                new ArrayList<>(List.of("Steel", "Fire", "Water", "Ice")),
+                new ArrayList<>(List.of("Grass", "Electric")),
+                new HashMap<>(Map.of("Tackle", 5)),
+                new HashMap<>(Map.of("HydroPump", 10)),
+                0, 100);
+
+        Pokemon caterpie = new Pokemon("Caterpie", "Bug", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Ground", "Grass")),
+                new ArrayList<>(List.of("Flying", "Rock", "Fire")),
+                new HashMap<>(Map.of("Tackle", 5)),
+                new HashMap<>(Map.of("BugBite", 10)),
+                0, 100);
+
+        Pokemon metapod = new Pokemon("Metapod", "Bug", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Ground", "Grass")),
+                new ArrayList<>(List.of("Flying", "Rock", "Fire")),
+                new HashMap<>(Map.of("Tackle", 5)),
+                new HashMap<>(Map.of("Slash", 10)),
+                0, 100);
+
+        Pokemon butterfree = new Pokemon("Butterfree", "Bug/Flying", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Bug", "Grass")),
+                new ArrayList<>(List.of("Flying", "Rock", "Fire", "Electric", "Ice")),
+                new HashMap<>(Map.of("Tackle", 5)),
+                new HashMap<>(Map.of("BugBuzz", 10)),
+                0, 100);
+
+        Pokemon weedle = new Pokemon("Weedle", "Bug/Poison", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")),
+                new ArrayList<>(List.of("Flying", "Rock", "Fire", "Psychic")),
+                new HashMap<>(Map.of("Tackle", 5)),
+                new HashMap<>(Map.of("PoisonSting", 10)),
+                0, 100);
+
+        Pokemon kakuna = new Pokemon("Kakuna", "Bug/Poison", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")),
+                new ArrayList<>(List.of("Flying", "Rock", "Fire", "Psychic")),
+                new HashMap<>(Map.of("Tackle", 5)),
+                new HashMap<>(Map.of("Slash", 10)),
+                0, 100);
+
+        Pokemon beedrill = new Pokemon("Beedrill", "Bug/Poison", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")),
+                new ArrayList<>(List.of("Flying", "Rock", "Fire", "Psychic")),
+                new HashMap<>(Map.of("Tackle", 5)),
+                new HashMap<>(Map.of("BugBuzz", 10)),
+                0, 100);
+
+        Pokemon pidgeotto = new Pokemon("Pidgeotto", "Normal/Flying", 1, 100, 100,
+                new ArrayList<>(List.of("Bug", "Grass")),
+                new ArrayList<>(List.of("Rock", "Electric", "Ice")),
+                new HashMap<>(Map.of("Tackle", 5)),
+                new HashMap<>(Map.of("WingAttack", 10)),
+                0, 100);
+
+        Pokemon pidgeot = new Pokemon("Pidgeot", "Normal/Flying", 1, 100, 100,
+                new ArrayList<>(List.of("Bug", "Grass")),
+                new ArrayList<>(List.of("Rock", "Electric", "Ice")),
+                new HashMap<>(Map.of("Tackle", 5)),
+                new HashMap<>(Map.of("Hurricane", 10)),
+                0, 100);
+
+        Pokemon raticate = new Pokemon("Raticate", "Normal", 1, 100, 100,
+                new ArrayList<>(),
+                new ArrayList<>(List.of("Fighting")),
+                new HashMap<>(Map.of("Bite", 5)),
+                new HashMap<>(Map.of("HyperFang", 10)),
+                0, 100);
+
+        Pokemon spearow = new Pokemon("Spearow", "Normal/Flying", 1, 100, 100,
+                new ArrayList<>(List.of("Bug", "Grass")),
+                new ArrayList<>(List.of("Rock", "Electric", "Ice")),
+                new HashMap<>(Map.of("Peck", 5)),
+                new HashMap<>(Map.of("WingAttack", 10)),
+                0, 100);
+
+        Pokemon fearow = new Pokemon("Fearow", "Normal/Flying", 1, 100, 100,
+                new ArrayList<>(List.of("Bug", "Grass")),
+                new ArrayList<>(List.of("Rock", "Electric", "Ice")),
+                new HashMap<>(Map.of("Peck", 5)),
+                new HashMap<>(Map.of("DrillPeck", 10)),
+                0, 100);
+
+        Pokemon arbok = new Pokemon("Arbok", "Poison", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")),
+                new ArrayList<>(List.of("Ground", "Psychic")),
+                new HashMap<>(Map.of("Bite", 5)),
+                new HashMap<>(Map.of("PoisonSting", 10)),
+                0, 100);
+
+        Pokemon pikachu = new Pokemon("Pikachu", "Electric", 1, 100, 100,
+                new ArrayList<>(List.of("Flying", "Steel", "Electric")),
+                new ArrayList<>(List.of("Ground")),
+                new HashMap<>(Map.of("QuickAttack", 5)),
+                new HashMap<>(Map.of("ThunderShock", 10)),
+                0, 100);
+
+        Pokemon raichu = new Pokemon("Raichu", "Electric", 1, 100, 100,
+                new ArrayList<>(List.of("Flying", "Steel", "Electric")),
+                new ArrayList<>(List.of("Ground")),
+                new HashMap<>(Map.of("QuickAttack", 5)),
+                new HashMap<>(Map.of("ThunderBolt", 10)),
+                0, 100);
+
+        Pokemon sandslash = new Pokemon("Sandslash", "Ground", 1, 100, 100,
+                new ArrayList<>(List.of("Poison", "Rock")),
+                new ArrayList<>(List.of("Water", "Grass", "Ice")),
+                new HashMap<>(Map.of("Scratch", 5)),
+                new HashMap<>(Map.of("EarthPower", 10)),
+                0, 100);
+
+        Pokemon nidorina = new Pokemon("Nidorina", "Poison", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")),
+                new ArrayList<>(List.of("Ground", "Psychic")),
+                new HashMap<>(Map.of("Cut", 5)),
+                new HashMap<>(Map.of("PoisonSting", 10)),
+                0, 100);
+
+        Pokemon nidoqueen = new Pokemon("Nidoqueen", "Poison/Ground", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Rock", "Fairy")),
+                new ArrayList<>(List.of("Water", "Ice", "Ground", "Psychic")),
+                new HashMap<>(Map.of("Cut", 5)),
+                new HashMap<>(Map.of("BodySlam", 10)),
+                0, 100);
+
+        Pokemon nidorino = new Pokemon("Nidorino", "Poison", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")),
+                new ArrayList<>(List.of("Ground", "Psychic")),
+                new HashMap<>(Map.of("Cut", 5)),
+                new HashMap<>(Map.of("PoisonSting", 10)),
+                0, 100);
+
+        Pokemon nidoking = new Pokemon("Nidoking", "Poison/Ground", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Rock", "Fairy")),
+                new ArrayList<>(List.of("Water", "Ice", "Ground", "Psychic")),
+                new HashMap<>(Map.of("Cut", 5)),
+                new HashMap<>(Map.of("EarthPower", 10)),
+                0, 100);
+
+        Pokemon clefairy = new Pokemon("Clefairy", "Fairy", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Bug", "Dark")),
+                new ArrayList<>(List.of("Poison", "Steel")),
+                new HashMap<>(Map.of("DoubleSlap", 5)),
+                new HashMap<>(Map.of("BodySlam", 10)),
+                0, 100);
+
+        Pokemon clefable = new Pokemon("Clefable", "Fairy", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Bug", "Dark")),
+                new ArrayList<>(List.of("Poison", "Steel")),
+                new HashMap<>(Map.of("DoubleSlap", 5)),
+                new HashMap<>(Map.of("Earthquake", 10)),
+                0, 100);
+
+        Pokemon vulpix = new Pokemon("Vulpix", "Fire", 1, 100, 100,
+                new ArrayList<>(List.of("Bug", "Steel", "Fire", "Grass", "Ice", "Fairy")),
+                new ArrayList<>(List.of("Ground", "Rock", "Water")),
+                new HashMap<>(Map.of("Bite", 5)),
+                new HashMap<>(Map.of("Ember", 10)),
+                0, 100);
+
+        Pokemon ninetales = new Pokemon("Ninetales", "Fire", 1, 100, 100,
+                new ArrayList<>(List.of("Bug", "Steel", "Fire", "Grass", "Ice", "Fairy")),
+                new ArrayList<>(List.of("Ground", "Rock", "Water")),
+                new HashMap<>(Map.of("Bite", 5)),
+                new HashMap<>(Map.of("FireSpin", 10)),
+                0, 100);
+
+        Pokemon jigglypuff = new Pokemon("Jigglypuff", "Normal/Fairy", 1, 100, 100,
+                new ArrayList<>(List.of("Bug", "Dark")),
+                new ArrayList<>(List.of("Poison", "Steel")),
+                new HashMap<>(Map.of("Scratch", 5)),
+                new HashMap<>(Map.of("Slash", 10)),
+                0, 100);
+
+        Pokemon wigglytuff = new Pokemon("Wigglytuff", "Normal/Fairy", 1, 100, 100,
+                new ArrayList<>(List.of("Bug", "Dark")),
+                new ArrayList<>(List.of("Poison", "Steel")),
+                new HashMap<>(Map.of("Pound", 5)),
+                new HashMap<>(Map.of("EarthPower", 10)),
+                0, 100);
+
+        Pokemon zubat = new Pokemon("Zubat", "Poison/Flying", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")),
+                new ArrayList<>(List.of("Ground")),
+                new HashMap<>(Map.of("Bite", 5)),
+                new HashMap<>(Map.of("Acid", 10)),
+                0, 100);
+
+        Pokemon golbat = new Pokemon("Golbat", "Poison/Flying", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")),
+                new ArrayList<>(List.of("Ground")),
+                new HashMap<>(Map.of("Bite", 5)),
+                new HashMap<>(Map.of("PoisonJab", 10)),
+                0, 100);
+
+        Pokemon oddish = new Pokemon("Oddish", "Grass/Poison", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Water", "Grass", "Electric", "Fairy")),
+                new ArrayList<>(List.of("Flying", "Fire", "Psychic", "Ice")),
+                new HashMap<>(Map.of("Scratch", 5)),
+                new HashMap<>(Map.of("VineWhip", 10)),
+                0, 100);
+
+        Pokemon gloom = new Pokemon("Gloom", "Grass/Poison", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Water", "Grass", "Electric", "Fairy")),
+                new ArrayList<>(List.of("Flying", "Fire", "Psychic", "Ice")),
+                new HashMap<>(Map.of("Scratch", 5)),
+                new HashMap<>(Map.of("PetalDance", 10)),
+                0, 100);
+
+        Pokemon vileplume = new Pokemon("Vileplume", "Grass/Poison", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Water", "Grass", "Electric", "Fairy")),
+                new ArrayList<>(List.of("Flying", "Fire", "Psychic", "Ice")),
+                new HashMap<>(Map.of("Scratch", 5)),
+                new HashMap<>(Map.of("SolarBeam", 10)),
+                0, 100);
+
+        Pokemon paras = new Pokemon("Paras", "Bug/Grass", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Ground", "Water", "Grass", "Electric")),
+                new ArrayList<>(List.of("Flying", "Poison", "Rock", "Bug", "Fire", "Ice")),
+                new HashMap<>(Map.of("Scratch", 5)),
+                new HashMap<>(Map.of("Slash", 10)),
+                0, 100);
+
+        Pokemon parasect = new Pokemon("Parasect", "Bug/Grass", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Ground", "Water", "Grass", "Electric")),
+                new ArrayList<>(List.of("Flying", "Poison", "Rock", "Bug", "Fire", "Ice")),
+                new HashMap<>(Map.of("Scratch", 5)),
+                new HashMap<>(Map.of("Slash", 10)),
+                0, 100);
+
+        Pokemon venomoth = new Pokemon("Venomoth", "Bug/Poison", 1, 100, 100,
+                new ArrayList<>(List.of("Fighting", "Poison", "Bug", "Grass", "Fairy")),
+                new ArrayList<>(List.of("Flying", "Rock", "Fire", "Psychic")),
+                new HashMap<>(Map.of("Cut", 5)),
+                new HashMap<>(Map.of("PoisonJab", 10)),
+                0, 100);
+
+        Pokemon diglett = new Pokemon("Diglett", "Ground", 1, 100, 100,
+                new ArrayList<>(List.of("Poison", "Rock")),
+                new ArrayList<>(List.of("Water", "Grass", "Ice")),
+                new HashMap<>(Map.of("Dig", 5)),
+                new HashMap<>(Map.of("Slash", 10)),
+                0, 100);
+
+        Pokemon dugtrio = new Pokemon("Dugtrio", "Ground", 1, 100, 100,
+                new ArrayList<>(List.of("Poison", "Rock")),
+                new ArrayList<>(List.of("Water", "Grass", "Ice")),
+                new HashMap<>(Map.of("Dig", 5)),
+                new HashMap<>(Map.of("EarthQuake", 10)),
+                0, 100);
+
+        Pokemon persian = new Pokemon("Persian", "Normal", 1, 100, 100,
+                new ArrayList<>(),
+                new ArrayList<>(List.of("Fighting")),
+                new HashMap<>(Map.of("Headbutt", 5)),
+                new HashMap<>(Map.of("DoubleKick", 10)),
+                0, 100);
+
+        Pokemon psyduck = new Pokemon("Psyduck", "Water", 1, 100, 100,
+                new ArrayList<>(List.of("Steel", "Fire", "Water", "Ice")),
+                new ArrayList<>(List.of("Grass", "Electric")),
+                new HashMap<>(Map.of("Headbutt", 5)),
+                new HashMap<>(Map.of("Bubble", 10)),
+                0, 100);
+
+        Pokemon golduck = new Pokemon("Golduck", "Water", 1, 100, 100,
+                new ArrayList<>(List.of("Steel", "Fire", "Water", "Ice")),
+                new ArrayList<>(List.of("Grass", "Electric")),
+                new HashMap<>(Map.of("Headbutt", 5)),
+                new HashMap<>(Map.of("HydroPump", 10)),
+                0, 100);
+
+        Pokemon mankey = new Pokemon("Mankey", "Fighting", 1, 100,100,
+                new ArrayList<>(List.of("Rock", "Bug", "Dark")),
+                new ArrayList<>(List.of("Flying", "Psychic", "Fairy")),
+                new HashMap<>(Map.of("LowKick", 5)),
+                new HashMap<>(Map.of("DoubleKick", 10)),
+                0, 100);
+
+        Pokemon primeape = new Pokemon("Primeape", "Fighting", 1, 100, 100,
+                new ArrayList<>(List.of("Rock", "Bug", "Dark")),
+                new ArrayList<>(List.of("Flying", "Psychic", "Fairy")),
+                new HashMap<>(Map.of("LowKick", 5)),
+                new HashMap<>(Map.of("KarateChop", 10)),
+                0, 100);
+
+        Pokemon growlithe = new Pokemon("Growlithe", "Fire", 1, 100, 100,
+                new ArrayList<>(List.of("Bug", "Steel", "Fire", "Grass", "Ice", "Fairy")),
+                new ArrayList<>(List.of("Ground", "Rock", "Water")),
+                new HashMap<>(Map.of("Bite", 5)),
+                new HashMap<>(Map.of("Ember", 10)),
+                0, 100);
+
+        Pokemon arcanine = new Pokemon("Arcanine", "Fire", 1, 100, 100,
+                new ArrayList<>(List.of("Bug", "Steel", "Fire", "Grass", "Ice", "Fairy")),
+                new ArrayList<>(List.of("Ground", "Rock", "Water")),
+                new HashMap<>(Map.of("Bite", 5)),
+                new HashMap<>(Map.of("FlameThrower", 10)),
+                0, 100); 
+        
+        //COMMON POKEMON --------------------------------------------------------------------------------------------------------------------------------------------------------      
+        ///common pokemon pewter
+        
+        
+        Pokemon Geodude = new Pokemon("Geodude", "Rock/Ground", 1, 100, 0,
+        new ArrayList<>(List.of("Normal", "Flying", "Poison", "Fire")),
+        new ArrayList<>(List.of("Water", "Grass", "Ice", "Fighting", "Ground", "Steel")),
+        new HashMap<>(Map.of("Tackle", 5)),
+        new HashMap<>(Map.of("Rock Throw", 8)),
+        0, 100);
+        
+        Pokemon Onix = new Pokemon("Onix", "Rock/Ground", 1, 100, 0,
+        new ArrayList<>(List.of("Normal", "Flying", "Poison", "Fire")),
+        new ArrayList<>(List.of("Water", "Grass", "Ice", "Fighting", "Ground", "Steel")),
+        new HashMap<>(Map.of("Bind", 5)),
+        new HashMap<>(Map.of("Rock Slide", 8)),
+        0, 100);
+
+        Pokemon Sandshrew = new Pokemon("Sandshrew", "Ground", 1, 100, 0,
+        new ArrayList<>(List.of("Poison", "Rock", "Electric")),
+        new ArrayList<>(List.of("Water", "Grass", "Ice")),
+        new HashMap<>(Map.of("Scratch", 5)),
+        new HashMap<>(Map.of("Slash", 8)),
+        0, 100);
+
+        //common pokemon Cerulean 
+        
+        Pokemon Poliwag = new Pokemon("Poliwag", "Water", 1, 100, 0,
+        new ArrayList<>(List.of("Fire", "Ground", "Rock")),
+        new ArrayList<>(List.of("Electric", "Grass")),
+        new HashMap<>(Map.of("Bubble", 5)),
+        new HashMap<>(Map.of("Water Gun", 8)),
+        0, 100);
+
+        Pokemon Goldeen = new Pokemon("Goldeen", "Water", 1, 100, 0,
+        new ArrayList<>(List.of("Fire", "Ground", "Rock")),
+        new ArrayList<>(List.of("Electric", "Grass")),
+        new HashMap<>(Map.of("Peck", 5)),
+        new HashMap<>(Map.of("Waterfall", 8)),
+        0, 100);
+
+        Pokemon Horsea = new Pokemon("Horsea", "Water", 1, 100, 0,
+        new ArrayList<>(List.of("Fire", "Ground", "Rock")),
+        new ArrayList<>(List.of("Electric", "Grass")),
+        new HashMap<>(Map.of("Bubble", 5)),
+        new HashMap<>(Map.of("Dragon Pulse", 8)),
+        0, 100);
+        
+        //common pokemon Vermilion 
+        
+        Pokemon Magnemite = new Pokemon("Magnemite", "Electric/Steel", 1, 100, 0,
+        new ArrayList<>(List.of("Electric", "Flying", "Fairy")),
+        new ArrayList<>(List.of("Ground", "Fighting", "Fire")),
+        new HashMap<>(Map.of("Tackle", 5)),
+        new HashMap<>(Map.of("Thunder Shock", 8)),
+        0, 100);
+
+        Pokemon Voltorb = new Pokemon("Voltorb", "Electric", 1, 100, 0,
+        new ArrayList<>(List.of("Electric", "Flying")),
+        new ArrayList<>(List.of("Ground")),
+        new HashMap<>(Map.of("Tackle", 5)),
+        new HashMap<>(Map.of("Spark", 8)),
+        0, 100);
+
+        Pokemon Diglett = new Pokemon("Diglett", "Ground", 3, 120, 100,
+        new ArrayList<>(List.of("Poison", "Rock", "Electric")),
+        new ArrayList<>(List.of("Water", "Grass", "Ice")),
+        new HashMap<>(Map.of("Scratch", 9)),
+        new HashMap<>(Map.of("Earthquake", 10)),
+        0, 100);
+
+        //common pokemon Celadon
+        
+        Pokemon Pidgey = new Pokemon("Pidgey", "Normal/Flying", 2, 110, 100,
+        new ArrayList<>(List.of("Electric", "Ice", "Rock")),
+        new ArrayList<>(List.of("Electric", "Rock")),
+        new HashMap<>(Map.of("Tackle", 7)),
+        new HashMap<>(Map.of("Gust", 10)),
+        0, 110);
+
+Pokemon Rattata = new Pokemon("Rattata", "Normal", 1, 100, 100,
+        new ArrayList<>(List.of("Fighting")),
+        new ArrayList<>(List.of("Ghost")),
+        new HashMap<>(Map.of("Tackle", 5)),
+        new HashMap<>(Map.of("Hyper Fang", 8)),
+        0, 100);
+
+Pokemon Bellsprout = new Pokemon("Bellsprout", "Grass/Poison", 10, 190, 200,
+        new ArrayList<>(List.of("Ground", "Psychic")),
+        new ArrayList<>(List.of("Flying", "Fire", "Ice", "Psychic")),
+        new HashMap<>(Map.of("Vine Whip", 23)),
+        new HashMap<>(Map.of("Acid", 26)),
+        0, 190);
+
+//common pokemon Fuchsia
+
+Pokemon Venonat = new Pokemon("Venonat", "Bug/Poison", 9, 180, 200,
+        new ArrayList<>(List.of("Grass", "Psychic")),
+        new ArrayList<>(List.of("Flying", "Psychic")),
+        new HashMap<>(Map.of("Tackle", 21)),
+        new HashMap<>(Map.of("Psybeam", 24)),
+        0, 180);
+
+Pokemon Koffing = new Pokemon("Koffing", "Poison", 8, 170, 200,
+        new ArrayList<>(List.of("Ground", "Psychic")),
+        new ArrayList<>(List.of("Psychic")),
+        new HashMap<>(Map.of("Tackle", 19)),
+        new HashMap<>(Map.of("Sludge", 22)),
+        0, 170);
+
+Pokemon Ekans = new Pokemon("Ekans", "Poison", 7, 160, 200,
+        new ArrayList<>(List.of("Ground", "Psychic")),
+        new ArrayList<>(List.of("Psychic")),
+        new HashMap<>(Map.of("Wrap", 17)),
+        new HashMap<>(Map.of("Poison Sting", 20)),
+        0, 160);
+
+//common pokemon Saffron
+        
+Pokemon Abra = new Pokemon("Abra", "Psychic", 6, 150, 200,
+        new ArrayList<>(List.of("Fighting")),
+        new ArrayList<>(List.of("Bug", "Ghost", "Dark")),
+        new HashMap<>(Map.of("Teleport", 15)),
+        new HashMap<>(Map.of("Psybeam", 18)),
+        0, 150);
+
+Pokemon MrMime = new Pokemon("Mr. Mime", "Psychic/Fairy", 11, 200, 200,
+        new ArrayList<>(List.of("Poison", "Steel")),
+        new ArrayList<>(List.of("Ghost", "Steel")),
+        new HashMap<>(Map.of("Confusion", 25)),
+        new HashMap<>(Map.of("Psychic", 28)),
+        0, 200);
+
+Pokemon Drowzee = new Pokemon("Drowzee", "Psychic", 5, 140, 100,
+        new ArrayList<>(List.of("Fighting")),
+        new ArrayList<>(List.of("Bug", "Ghost", "Dark")),
+        new HashMap<>(Map.of("Pound", 13)),
+        new HashMap<>(Map.of("Confusion", 16)),
+        0, 140);
+
+//common pokemon Cinnabar
+
+Pokemon Ponyta = new Pokemon("Ponyta", "Fire", 12, 210, 200,
+        new ArrayList<>(List.of("Water", "Ground", "Rock")),
+        new ArrayList<>(List.of("Bug", "Steel", "Fire", "Grass", "Ice", "Fairy")),
+        new HashMap<>(Map.of("Tackle", 27)),
+        new HashMap<>(Map.of("Ember", 30)),
+        0, 210);
+
+Pokemon Magmar = new Pokemon("Magmar", "Fire", 4, 130, 100,
+        new ArrayList<>(List.of("Water", "Ground", "Rock")),
+        new ArrayList<>(List.of("Bug", "Steel", "Fire", "Grass", "Ice", "Fairy")),
+        new HashMap<>(Map.of("Ember", 11)),
+        new HashMap<>(Map.of("Fire Punch", 14)),
+        0, 130);
+
+Pokemon Grimer = new Pokemon("Grimer", "Poison", 13, 220, 200,
+        new ArrayList<>(List.of("Ground", "Psychic")),
+        new ArrayList<>(List.of("Poison", "Bug", "Ghost", "Steel", "Fairy")),
+        new HashMap<>(Map.of("Pound", 29)),
+        new HashMap<>(Map.of("Sludge Bomb", 32)),
+        0, 220);
+
+//common pokemon Viridian
+//+Pidgey 
+//+Rattata
+
+Pokemon NidoranF = new Pokemon("Nidoran", "Poison", 3, 130, 100,
+        new ArrayList<>(List.of("Ground", "Psychic")),
+        new ArrayList<>(List.of("Poison", "Bug", "Ghost", "Steel", "Fairy")),
+        new HashMap<>(Map.of("Scratch", 9)),
+        new HashMap<>(Map.of("Poison Sting", 12)),
+        0, 130);
+
+Pokemon  NidoranM = new Pokemon("Nidoran♂", "Poison", 14, 230, 200,
+        new ArrayList<>(List.of("Ground", "Psychic")),
+        new ArrayList<>(List.of("Poison", "Bug", "Ghost", "Steel", "Fairy")),
+        new HashMap<>(Map.of("Peck", 31)),
+        new HashMap<>(Map.of("Poison Sting", 34)),
+        0, 230);
+
+//common pokemon lavender
+
+Pokemon Gastly = new Pokemon("Gastly", "Ghost/Poison", 2, 110, 100,
+        new ArrayList<>(List.of("Ground", "Psychic", "Ghost", "Dark")),
+        new ArrayList<>(List.of("Poison", "Bug")),
+        new HashMap<>(Map.of("Lick", 7)),
+        new HashMap<>(Map.of("Shadow Ball", 10)),
+        0, 110);
+
+Pokemon Cubone = new Pokemon("Cubone", "Ground", 15, 240, 200,
+        new ArrayList<>(List.of("Water", "Grass", "Ice")),
+        new ArrayList<>(List.of("Poison", "Rock")),
+        new HashMap<>(Map.of("Bone Club", 33)),
+        new HashMap<>(Map.of("Bonemerang", 36)),
+        0, 240);
+
+Pokemon Meowth = new Pokemon("Meowth", "Normal", 1, 100, 100,
+        new ArrayList<>(List.of("Fighting")),
+        new ArrayList<>(List.of("Ghost")),
+        new HashMap<>(Map.of("Scratch", 5)),
+        new HashMap<>(Map.of("Pay Day", 8)),
+        0, 100);
+
+//common pokemon pallet town
+//bulbasaur
+//pidgey
+//rattata
+
+
+        callpokemon.put("Gastly", Gastly);
+        callpokemon.put("Cubone", Cubone);
+        callpokemon.put("Meowth", Meowth);
+        callpokemon.put("Rattata", Rattata);
+        callpokemon.put("Nidoranf", NidoranF);
+        callpokemon.put("Nidoranm", NidoranM);
+        callpokemon.put("Ponyta", Ponyta);
+        callpokemon.put("Magmar", Magmar);
+        callpokemon.put("Grimer", Grimer);
+        callpokemon.put("Abra", Abra);
+        callpokemon.put("Mr. Mime", MrMime);
+        callpokemon.put("Drowzee", Drowzee);
+        callpokemon.put("Venonat", Venonat);
+        callpokemon.put("Koffing", Koffing);
+        callpokemon.put("Ekans", Ekans);
+        callpokemon.put("Pidgey", Pidgey);
+        callpokemon.put("Bellsprout", Bellsprout);
+        callpokemon.put("Magnemite", Magnemite);
+        callpokemon.put("Voltorb", Voltorb);
+        callpokemon.put("Diglett", Diglett);
+        callpokemon.put("Poliwag",  Poliwag);
+        callpokemon.put("Goldeen", Goldeen);
+        callpokemon.put("Horsea", Horsea);
+        callpokemon.put("Onix", Onix);
+        callpokemon.put("Sandshrew", Sandshrew);
+        callpokemon.put("Geodude", Geodude);
         callpokemon.put("Bulbasaur", bulbasaur);
         callpokemon.put("Ivysaur", ivysaur);
         callpokemon.put("Venusaur", venusaur);
@@ -526,23 +627,17 @@ Pokemon arcanine = new Pokemon("Arcanine", "Fire", 1, 90, 90,
         callpokemon.put("Weedle", weedle);
         callpokemon.put("Kakuna", kakuna);
         callpokemon.put("Beedrill", beedrill);
-        callpokemon.put("Pidgey", pidgey);
         callpokemon.put("Pidgeotto", pidgeotto);
         callpokemon.put("Pidgeot", pidgeot);
-        callpokemon.put("Rattata", rattata);
         callpokemon.put("Raticate", raticate);
         callpokemon.put("Spearow", spearow);
         callpokemon.put("Fearow", fearow);
-        callpokemon.put("Ekans", ekans);
         callpokemon.put("Arbok", arbok);
         callpokemon.put("Pikachu", pikachu);
         callpokemon.put("Raichu", raichu);
-        callpokemon.put("Sandshrew", sandshrew);
         callpokemon.put("Sandslash", sandslash);
-        callpokemon.put("NidoranF", nidoranF);
         callpokemon.put("Nidorina", nidorina);
         callpokemon.put("Nidoqueen", nidoqueen);
-        callpokemon.put("NidoranM", nidoranM);
         callpokemon.put("Nidorino", nidorino);
         callpokemon.put("Nidoking", nidoking);
         callpokemon.put("Clefairy", clefairy);
@@ -558,11 +653,9 @@ Pokemon arcanine = new Pokemon("Arcanine", "Fire", 1, 90, 90,
         callpokemon.put("Vileplume", vileplume);
         callpokemon.put("Paras", paras);
         callpokemon.put("Parasect", parasect);
-        callpokemon.put("Venonat", venonat);
         callpokemon.put("Venomoth", venomoth);
         callpokemon.put("Diglett", diglett);
         callpokemon.put("Dugtrio", dugtrio);
-        callpokemon.put("Meowth", meowth);
         callpokemon.put("Persian", persian);
         callpokemon.put("Psyduck", psyduck);
         callpokemon.put("Golduck", golduck);
@@ -571,86 +664,277 @@ Pokemon arcanine = new Pokemon("Arcanine", "Fire", 1, 90, 90,
         callpokemon.put("Growlithe", growlithe);
         callpokemon.put("Arcanine", arcanine);
 
-        
-/// leaderpokemon      
+        //pick 3 pokemon (starter pokemon)-----------------------------------------------------------------------------------------------------------------------------------------
+        Pokemon starterBulbasaur = new Pokemon("Bulbasaur", "Grass/Poison", 5, 225, 100,
+                new ArrayList<>(List.of("Fighting", "Water", "Grass", "Fairy", "Electric")),
+                new ArrayList<>(List.of("Flying", "Fire", "Psychic", "Ice")),
+                new HashMap<>(Map.of("Tackle", 15)),
+                new HashMap<>(Map.of("Vine Whip", 20)),
+                0,
+                225
+        );
+
+        Pokemon starterCharmander = new Pokemon("Nidoqueen", "Poison/Ground", 5, 225, 100,
+                new ArrayList<>(List.of("Water", "Psychic")),
+                new ArrayList<>(List.of("Ice", "Ground")),
+                new HashMap<>(Map.of("Body Slam", 15)),
+                new HashMap<>(Map.of("Earthquake", 18)),
+                0, 225);
+
+        Pokemon starterSquirtle = new Pokemon("Squirtle", "Water", 5, 225, 100,
+                new ArrayList<>(List.of("Steel", "Fire", "Water", "Ice")),
+                new ArrayList<>(List.of("Grass", "Electric")),
+                new HashMap<>(Map.of("Tackle", 15)),
+                new HashMap<>(Map.of("Bubble", 20)),
+                0, 225);
+
+        callpokemon.put("starterBulbasaur", starterBulbasaur);
+        callpokemon.put("starterCharmander", starterCharmander);
+        callpokemon.put("starterSquirtle", starterSquirtle);
+
+/// leaderpokemon--------------------------------------------------------------------------------------------------------------------------------------------------------------------  
 //GIOVANNI -VIRIDIAN GYM
-Pokemon leaderRhyhorn = new Pokemon("Rhyhorn", "Ground/Rock", 1, 100, 0, 
-    new ArrayList<>(List.of("Poison", "Rock")), 
-    new ArrayList<>(List.of("Water", "Grass", "Ice", "Fighting", "Ground", "Steel")), 
-         new HashMap <>(Map.of("Stomp", 5)),
-            new HashMap <>(Map.of("Rock type", 8)),
-    0, 100);
+        Pokemon leaderRhyhorn = new Pokemon("Rhyhorn", "Ground/Rock", 1, 100, 0,
+                new ArrayList<>(List.of("Poison", "Rock")),
+                new ArrayList<>(List.of("Water", "Grass", "Ice", "Fighting", "Ground", "Steel")),
+                new HashMap<>(Map.of("Stomp", 5)),
+                new HashMap<>(Map.of("Rock type", 8)),
+                0, 100);
 
-Pokemon leaderDugtrio = new Pokemon("Dugtrio", "Ground", 1, 100, 0, 
-    new ArrayList<>(List.of("Poison", "Rock")), 
-    new ArrayList<>(List.of("Water", "Grass", "Ice")), 
-    new HashMap<>(Map.of("Mud-Slap", 5)),
-    new HashMap<>(Map.of("Slash", 8)), 
-    0, 100);
+        Pokemon leaderDugtrio = new Pokemon("Dugtrio", "Ground", 1, 100, 0,
+                new ArrayList<>(List.of("Poison", "Rock")),
+                new ArrayList<>(List.of("Water", "Grass", "Ice")),
+                new HashMap<>(Map.of("Mud-Slap", 5)),
+                new HashMap<>(Map.of("Slash", 8)),
+                0, 100);
 
-
-Pokemon leaderMarowak = new Pokemon("Marowak", "Ground", 1, 100, 0, 
-    new ArrayList<>(List.of("Poison", "Rock")), 
-    new ArrayList<>(List.of("Water", "Grass", "Ice")), 
-    new HashMap<>(Map.of("Bone Club", 5)),
-    new HashMap<>(Map.of("Headbutt", 8)),
-    0, 100);
-
-
-Pokemon leaderNidoqueen = new Pokemon("Nidoqueen", "Poison/Ground", 1, 100, 0, 
-    new ArrayList<>(List.of("Water", "Psychic")), 
-    new ArrayList<>(List.of("Ice", "Ground")), 
-    new HashMap<>(Map.of("Body Slam", 5)),
-    new HashMap<>(Map.of("Earthquake", 8)),
-    0, 100);
-
-
-Pokemon leaderNidoking = new Pokemon("Nidoking", "Poison/Ground", 1, 100, 0, 
-    new ArrayList<>(List.of("Water", "Psychic")), 
-    new ArrayList<>(List.of("Ice", "Ground")), 
-    new HashMap<>(Map.of("Thrash", 5)),
-    new HashMap<>(Map.of("Poison Jab", 8)),
-    0, 100);
-
+        Pokemon leaderMarowak = new Pokemon("Marowak", "Ground", 1, 100, 0,
+                new ArrayList<>(List.of("Poison", "Rock")),
+                new ArrayList<>(List.of("Water", "Grass", "Ice")),
+                new HashMap<>(Map.of("Bone Club", 5)),
+                new HashMap<>(Map.of("Headbutt", 8)),
+                0, 100);
 
         callpokemon.put("Rhyhorn", leaderRhyhorn);
-        callpokemon.put("Dugtrio", leaderDugtrio);  
+        callpokemon.put("Dugtrio", leaderDugtrio);
         callpokemon.put("Marowak", leaderMarowak);
-        callpokemon.put("Nidoqueen", leaderNidoqueen);
-        callpokemon.put("Nidoking", leaderNidoking);
         
-        
-        
+//BLAINE - CINNABAR ISLAND
+        Pokemon leaderGrowlithe = new Pokemon("Growlithe", "Fire", 1, 100, 0,
+        new ArrayList<>(List.of("Bug", "Steel", "Grass", "Ice")),
+        new ArrayList<>(List.of("Water", "Rock", "Ground")),
+        new HashMap<>(Map.of("Flame Wheel", 5)),
+        new HashMap<>(Map.of("Flamethrower", 8)),
+        0, 100);
+
+Pokemon leaderPonyta = new Pokemon("Ponyta", "Fire", 1, 100, 0,
+        new ArrayList<>(List.of("Bug", "Steel", "Grass", "Ice")),
+        new ArrayList<>(List.of("Water", "Rock", "Ground")),
+        new HashMap<>(Map.of("Stomp", 5)),
+        new HashMap<>(Map.of("Fire Spin", 8)),
+        0, 100);
+
+Pokemon leaderMagmar = new Pokemon("Magmar", "Fire", 1, 100, 0,
+        new ArrayList<>(List.of("Bug", "Steel", "Grass", "Ice")),
+        new ArrayList<>(List.of("Water", "Rock", "Ground")),
+        new HashMap<>(Map.of("Fire Punch", 5)),
+        new HashMap<>(Map.of("Lava Plume", 8)),
+        0, 100);
+
+callpokemon.put("Growlithe", leaderGrowlithe);
+callpokemon.put("Ponyta", leaderPonyta);
+callpokemon.put("Magmar", leaderMagmar);
+
+//ERIKA - CELADON CITY
+Pokemon leaderVictreebel = new Pokemon("Victreebel", "Grass/Poison", 1, 100, 0,
+        new ArrayList<>(List.of("Water", "Electric", "Fairy")),
+        new ArrayList<>(List.of("Fire", "Ice", "Flying", "Psychic")),
+        new HashMap<>(Map.of("Razor Leaf", 5)),
+        new HashMap<>(Map.of("Solar Beam", 8)),
+        0, 100);
+
+Pokemon leaderTangela = new Pokemon("Tangela", "Grass", 1, 100, 0,
+        new ArrayList<>(List.of("Water", "Electric", "Ground")),
+        new ArrayList<>(List.of("Fire", "Ice", "Poison", "Flying", "Bug")),
+        new HashMap<>(Map.of("Vine Whip", 5)),
+        new HashMap<>(Map.of("Giga Drain", 8)),
+        0, 100);
+
+Pokemon leaderExeggcute = new Pokemon("Exeggcute", "Grass/Psychic", 1, 100, 0,
+        new ArrayList<>(List.of("Water", "Electric", "Fighting", "Psychic")),
+        new ArrayList<>(List.of("Fire", "Ice", "Poison", "Flying", "Bug", "Dark", "Ghost")),
+        new HashMap<>(Map.of("Confusion", 5)),
+        new HashMap<>(Map.of("Solar Beam", 8)),
+        0, 100);
+
+callpokemon.put("Victreebel", leaderVictreebel);
+callpokemon.put("Tangela", leaderTangela);
+callpokemon.put("Exeggcute", leaderExeggcute);
+
+
+//MISTY - CERULEUN CITY 
+Pokemon leaderStaryu = new Pokemon("Staryu", "Water", 1, 100, 0,
+        new ArrayList<>(List.of("Fire", "Ground", "Rock")),
+        new ArrayList<>(List.of("Electric", "Grass")),
+        new HashMap<>(Map.of("Water Gun", 5)),
+        new HashMap<>(Map.of("Bubble Beam", 8)),
+        0, 100);
+
+Pokemon leaderHorsea = new Pokemon("Horsea", "Water", 1, 100, 0,
+        new ArrayList<>(List.of("Fire", "Ground", "Rock")),
+        new ArrayList<>(List.of("Electric", "Grass")),
+        new HashMap<>(Map.of("Bubble", 5)),
+        new HashMap<>(Map.of("Dragon Pulse", 8)),
+        0, 100);
+
+Pokemon leaderGoldeen = new Pokemon("Goldeen", "Water", 1, 100, 0,
+        new ArrayList<>(List.of("Fire", "Ground", "Rock")),
+        new ArrayList<>(List.of("Electric", "Grass")),
+        new HashMap<>(Map.of("Peck", 5)),
+        new HashMap<>(Map.of("Waterfall", 8)),
+        0, 100);
+
+callpokemon.put("Staryu", leaderStaryu);
+callpokemon.put("Horsea", leaderHorsea);
+callpokemon.put("Goldeen", leaderGoldeen);
+
+
+//KOGA - FUCHSIA CITY
+Pokemon leaderKoffing = new Pokemon("Koffing", "Poison", 1, 100, 0,
+        new ArrayList<>(List.of("Grass", "Fairy")),
+        new ArrayList<>(List.of("Psychic", "Ground")),
+        new HashMap<>(Map.of("Smog", 5)),
+        new HashMap<>(Map.of("Sludge Bomb", 8)),
+        0, 100);
+
+Pokemon leaderMuk = new Pokemon("Muk", "Poison", 1, 100, 0,
+        new ArrayList<>(List.of("Grass", "Fairy")),
+        new ArrayList<>(List.of("Psychic", "Ground")),
+        new HashMap<>(Map.of("Poison Jab", 5)),
+        new HashMap<>(Map.of("Gunk Shot", 8)),
+        0, 100);
+
+Pokemon leaderArbok = new Pokemon("Arbok", "Poison", 1, 100, 0,
+        new ArrayList<>(List.of("Grass", "Fairy")),
+        new ArrayList<>(List.of("Psychic", "Ground")),
+        new HashMap<>(Map.of("Bite", 5)),
+        new HashMap<>(Map.of("Acid", 8)),
+        0, 100);
+
+callpokemon.put("Koffing", leaderKoffing);
+callpokemon.put("Muk", leaderMuk);
+callpokemon.put("Arbok", leaderArbok);
+
+
+//BROCK - PEWTER CITY
+Pokemon leaderGeodude = new Pokemon("Geodude", "Rock/Ground", 1, 100, 0,
+        new ArrayList<>(List.of("Normal", "Flying", "Poison", "Fire")),
+        new ArrayList<>(List.of("Water", "Grass", "Ice", "Fighting", "Ground", "Steel")),
+        new HashMap<>(Map.of("Tackle", 5)),
+        new HashMap<>(Map.of("Rock Throw", 8)),
+        0, 100);
+
+Pokemon leaderOnix = new Pokemon("Onix", "Rock/Ground", 1, 100, 0,
+        new ArrayList<>(List.of("Normal", "Flying", "Poison", "Fire")),
+        new ArrayList<>(List.of("Water", "Grass", "Ice", "Fighting", "Ground", "Steel")),
+        new HashMap<>(Map.of("Bind", 5)),
+        new HashMap<>(Map.of("Rock Slide", 8)),
+        0, 100);
+
+callpokemon.put("Geodude", leaderGeodude);
+callpokemon.put("Onix", leaderOnix);
+
+
+//SABRINA - SAFFRON CITY
+Pokemon leaderKadabra = new Pokemon("Kadabra", "Psychic", 1, 100, 0,
+        new ArrayList<>(List.of("Fighting", "Poison")),
+        new ArrayList<>(List.of("Bug", "Ghost", "Dark")),
+        new HashMap<>(Map.of("Confusion", 5)),
+        new HashMap<>(Map.of("Psybeam", 8)),
+        0, 100);
+
+Pokemon leaderVenomoth = new Pokemon("Venomoth", "Bug/Poison", 1, 100, 0,
+        new ArrayList<>(List.of("Grass", "Fighting", "Bug", "Fairy")),
+        new ArrayList<>(List.of("Fire", "Flying", "Psychic", "Rock")),
+        new HashMap<>(Map.of("Tackle", 5)),
+        new HashMap<>(Map.of("Bug Buzz", 8)),
+        0, 100);
+
+Pokemon leaderHypno = new Pokemon("Hypno", "Psychic", 1, 100, 0,
+        new ArrayList<>(List.of("Fighting", "Poison")),
+        new ArrayList<>(List.of("Bug", "Ghost", "Dark")),
+        new HashMap<>(Map.of("Headbutt", 5)),
+        new HashMap<>(Map.of("Hypnosis", 8)),
+        0, 100);
+
+callpokemon.put("Kadabra", leaderKadabra);
+callpokemon.put("Venomoth", leaderVenomoth);
+callpokemon.put("Hypno", leaderHypno);
+
+//LT.SURGE - VERMILLION CITY
+Pokemon leaderVoltorb = new Pokemon("Voltorb", "Electric", 1, 100, 0,
+        new ArrayList<>(List.of("Electric", "Flying")),
+        new ArrayList<>(List.of("Ground")),
+        new HashMap<>(Map.of("Tackle", 5)),
+        new HashMap<>(Map.of("Spark", 8)),
+        0, 100);
+
+Pokemon leaderMagnemite = new Pokemon("Magnemite", "Electric/Steel", 1, 100, 0,
+        new ArrayList<>(List.of("Electric", "Flying", "Fairy")),
+        new ArrayList<>(List.of("Ground", "Fighting", "Fire")),
+        new HashMap<>(Map.of("Tackle", 5)),
+        new HashMap<>(Map.of("Thunder Shock", 8)),
+        0, 100);
+
+Pokemon leaderPikachu = new Pokemon("Pikachu", "Electric", 1, 100, 0,
+        new ArrayList<>(List.of("Electric", "Flying")),
+        new ArrayList<>(List.of("Ground")),
+        new HashMap<>(Map.of("Quick Attack", 5)),
+        new HashMap<>(Map.of("Thunderbolt", 8)),
+        0, 100);
+
+callpokemon.put("Voltorb", leaderVoltorb);
+callpokemon.put("Magnemite", leaderMagnemite);
+callpokemon.put("Pikachu", leaderPikachu);
+
     }
-    
-    
-    
-    
-    
+
     public static Pokemon createPokemon(String pokemonName) {
         return callpokemon.get(pokemonName);
     }
-    
-     public static Pokemon createPokemon(Pokemon pokemonName) {
+
+    public static Pokemon createPokemon(Pokemon pokemonName) {
         return callpokemon.get(pokemonName);
     }
     
-     public static void ShowPokemon(Pokemon pokemon) {
-    System.out.println(pokemon.getName() + " - Level: " + pokemon.getLevel());
-    System.out.println("Type: " + pokemon.getType());
-    System.out.println("HP: " + pokemon.getcurrentHitPoints() + "/" + pokemon.getHitPoints());
-    System.out.println("XP: " + pokemon.getcurrentXP() + "/" + pokemon.getXP());
-    System.out.println("Moves:");
-    for (Map.Entry<String, Integer> entry : pokemon.getMoves().entrySet()) {
+  
+    public static void ShowPokemon(Pokemon pokemon) {
+        
+        if (pokemon == null) {
+        System.out.println("Pokemon is null");
+        return;
+    }
+        
+        System.out.println(pokemon.getName() + " - Level: " + pokemon.getLevel());
+        System.out.println("Type: " + pokemon.getType());
+        System.out.println("HP: " + pokemon.getcurrentHitPoints() + "/" + pokemon.getHitPoints());
+        System.out.println("XP: " + pokemon.getcurrentXP() + "/" + pokemon.getXP());
+        System.out.println("Moves:");
+        for (Map.Entry<String, Integer> entry : pokemon.getMoves().entrySet()) {
         System.out.println("- " + entry.getKey() + " [" + entry.getValue() + " damage]");
+        } 
+        System.out.println("Strong Against:");
+        for (String type : pokemon.getStrongAgainst()) {
+            System.out.println("- " + type);
+        }
+        System.out.println("Weak Against:");
+        for (String type : pokemon.getWeakAgainst()) {
+            System.out.println("- " + type);
+        } 
     }
-    System.out.println("Strong Against:");
-    for (String type : pokemon.getStrongAgainst()) {
-        System.out.println("- " + type);
-    }
-    System.out.println("Weak Against:");
-    for (String type : pokemon.getWeakAgainst()) {
-        System.out.println("- " + type);
-    }
+       
 }
-}
+
+
+
+    
