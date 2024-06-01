@@ -1,0 +1,106 @@
+
+package project.pikachu;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class Wild {
+    
+    private String wildName=" ";
+    private List<Pokemon> wildPokemon;
+    private int wildlevel;
+    private List<String> wildStrongAgainst;
+    private List<String> wildWeakAgainst;
+    private int wildHitPoints;
+    private int wildcurrentHitPoints;
+    private int wildXP;
+    private int wildcurrentXP;
+    
+     public Wild(String wildName, List<Pokemon> wildPokemon, int wildlevel, List<String> wildStrongAgainst, List<String> wildWeakAgainst, int wildHitPoints, int wildXP, int wildcurrentHitPoints, int wildcurrentXP) {
+        this.wildName = wildName;
+        this.wildPokemon = new ArrayList<>();
+        this.wildlevel=wildlevel;
+        this.wildStrongAgainst=new ArrayList<>();
+        this.wildWeakAgainst=new ArrayList<>();
+        this.wildXP=wildXP;
+        this.wildcurrentXP=wildcurrentXP;
+        this.wildHitPoints=wildHitPoints;
+        this.wildcurrentHitPoints=wildcurrentHitPoints;
+    }
+
+    public String getwildName() {
+        return wildName;
+    }
+    
+    public void setwildName(String wildName) {
+        this.wildName=wildName;
+    }
+
+    public List<Pokemon> getwildPokemon() {
+        return new ArrayList<>(wildPokemon);
+    }
+    
+     public void setwildPokemon(Pokemon pokemon) {
+     this.wildPokemon.add(pokemon);
+    }
+    
+    public int getwildLevel(){
+        return wildlevel;
+    }
+    
+      public List<String>  getwildStrongAgainst (){
+        return new ArrayList<>(wildStrongAgainst);
+    }
+    
+    public void setwildStrongAgainst(String StrongAgainst){
+        this.wildStrongAgainst =new ArrayList<>();   
+    }
+    
+    public List<String> getwildWeakAgainst (){
+        return new ArrayList<>(wildWeakAgainst);
+    }
+    
+     public void setwildWeakAgainst (String WeakAgainst ){
+        this.wildWeakAgainst = new ArrayList<>();
+     }    
+     
+        public int getwildHitPoints(){
+        return wildHitPoints;
+    }
+
+     public void setwildHitPoints(int hp) {
+        this.wildHitPoints = wildHitPoints;
+    }
+    
+     public int getwildcurrentHitPoints() {
+        return wildcurrentHitPoints;
+    }
+     
+     public int getwildXP (){
+        return wildXP;
+    }
+    
+     public void setwildXP ( int wildXP ){
+        this.wildXP = wildXP;
+    }
+    
+    public int getwildcurrentXP (){
+        return wildcurrentXP;
+    }
+    
+    public void setwildcurrentXP ( int wildcurrentXP ){  
+        this.wildcurrentXP = wildcurrentXP;
+    }
+       
+
+    public void setwildcurrentHitPoints(int wildcurrenthitPoints) {
+        this.wildcurrentHitPoints = wildcurrenthitPoints;
+    }
+    
+    public void remove(){
+        this.wildPokemon.clear();
+    }
+    
+    
+}
