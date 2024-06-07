@@ -164,23 +164,23 @@ public class Game {
                     }
                     
                     System.out.println("Your Pokemon:");
-                    for (int i =0 ; i < player.getTeam().size(); i++) {
+                    for (int i = 0; i < player.getTeam().size(); i++) {
                         Pokemon pokemon = player.getTeam().get(i);
-                        System.out.println((i+1) + ": " + pokemon.getName() + " - Level: " + pokemon.getLevel());
+                        System.out.println((i + 1) + ": " + pokemon.getName() + " - Level: " + pokemon.getLevel());
                     }
                     System.out.println("+----------------------------------------------------------------------+");
                     System.out.print("Please choose your pokemon: ");
-                    Scanner scanwild = new Scanner (System.in);
-                    int choosepokewild = scanner.nextInt()-1;
-                    scanner.nextLine();
+                    int choosepokewild = scanner.nextInt() - 1;
+                    scanner.nextLine(); // consume the newline character
 
                     if (choosepokewild >= 0 && choosepokewild < player.getTeam().size()) {
                         Pokemon chosenPokemon = player.getTeam().get(choosepokewild);
                         System.out.println("You have chosen: " + chosenPokemon.getName());
+                        WildPokemonBattle.wildbattle(player, wild, player.getLocation(), chosenPokemon);
+                        wild.remove(); // to avoid a loop
+                    } else {
+                        System.out.println("Invalid choice. Please try again.");
                     }
-                    
-                    WildPokemonBattle.wildbattle(player, wild, player.getLocation());
-                    wild.remove();//xnak bagi loop
                     break;
 
                 case "4a":
@@ -471,4 +471,3 @@ public class Game {
     }
 
 }
-
