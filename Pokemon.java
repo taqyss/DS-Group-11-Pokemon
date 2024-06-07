@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.io.Serializable;
 
 public class Pokemon {
     
@@ -148,11 +149,26 @@ public class Pokemon {
     
      public void setMoves2(Map<String, Integer> Moves2) {
         this.Moves2 = new HashMap<>();
-        
-        
     }
-    
 
+    public int getCurrentHitPoints() {
+        return currentHitPoints;
+    }
+
+    public int getCurrentXP() {
+        return currentXP;
+    }
+
+    public Map<String, Integer> getMoves1() {
+        return Moves1;
+    }
+
+    public Map<String, Integer> getMoves2() {
+        return Moves2;
+    }
+     
+    
+    
     public void levelUp(int XP , int HitPoints) {
         this.level++;
         // increase hit points and move damage upon leveling up
@@ -210,10 +226,7 @@ public class Pokemon {
       for (Pokemon pokemon : player.getTeam()) {
         pokemon.setcurrentHitPoints(pokemon.getHitPoints());      
     }
-        
-    
     }
-    
 }
     
    
