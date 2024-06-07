@@ -91,7 +91,9 @@ public class WildPokemonBattle {
 
                 if (wildPokemon.getcurrentHitPoints() <= 0) {
                     System.out.println(wildPokemon.getName() + " fainted!\n");
-                    int XPGained = 5 * wildPokemon.getLevel();
+
+                    // Set XP gain to 25
+                    int XPGained = 25;
                     chosenPokemon.setcurrentXP(chosenPokemon.getcurrentXP() + XPGained); // Add gained XP to the current XP
 
                     // Check for level up
@@ -134,13 +136,13 @@ public class WildPokemonBattle {
                 System.out.println("+----------------------------------------------------------------------+");
                 return; // Exit the method if the player lost
             }
-        }
 
-        if (playerWon) {
-            System.out.println("You won the battle!\n+----------------------------------------------------------------------+");
-            System.out.println("+----------------------------------------------------------------------+");
-        }
+            if (playerWon) {
+                System.out.println("You won the battle!\n+----------------------------------------------------------------------+");
+                System.out.println("+----------------------------------------------------------------------+");
+            }
     }
+}
 
     private static void attack(Pokemon attacker, Pokemon defender, String move) {
         int damage = attacker.getMoves().get(move);
