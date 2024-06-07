@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.*;
 import java.util.ArrayList;
 
-public class Game {
+public class Game { //changes
 
     private GameMap gameMap;
     private Player player;
@@ -14,22 +14,67 @@ public class Game {
     private Gym gym;
     private Wild wild;
     private Pokemon pokemon;
+    private SaveManager saveManager;
+    private AccountManager accountManager;
+    private Game game;
 
     public Game() {
         this.gameMap = new GameMap();
-        this.player = new Player("Pallet Town");  // Starting location
+        this.player = new Player("", "Pallet Town", new ArrayList<>(), new ArrayList<>());  // Starting location
         this.scanner = new Scanner(System.in);
         this.gym = new Gym("", new ArrayList<>(), 0, new ArrayList<>(), new ArrayList<>(), "", 0, 0, 0, 0);
         this.wild = new Wild("", new ArrayList<>(), 0, new ArrayList<>(), new ArrayList<>(), 0, 0, 0, 0);
         this.pokemon = new Pokemon("", "", 0, 0, 0, new ArrayList<>(), new ArrayList<>(), new HashMap<>(), new HashMap<>(), 0, 0);
+        this.saveManager = new SaveManager();
+        this.accountManager = new AccountManager(saveManager);
     }
+    
+    public Game(Player player){
+        this.player = player;
+        this.gameMap = new GameMap(); 
+    }
+    
+    public Player getPlayer(){
+        return player;
+    }
+    
+    public void enter(){        
+        System.out.println("Welcome to Pokemon Game!");
+        System.out.println("[1] Create Account");
+        System.out.println("[2] Login");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+        switch (choice) {
+            case 1:
+                accountManager.createAccount();
+                start();
+                break;
+                
+            case 2:
+                if (accountManager.login()) {
+                    player = accountManager.getCurrentPlayer();
+                    if(player != null){
+                        player = saveManager.loadGame(player.getName());
+                    }
+                    System.out.println("Welcome, " + player.getName());
+                    start();
+                } 
+                break;
+
+            default:
+                System.out.println("Invalid choice.");
+                enter();
+                break;
+        }
+    }
+    
+    
 
     public void start() {
         //just nak try jer letak pokemon dulu jadi tak--------------------------------------------------------------------------------------------------------------------------
-        int starterPokemon = 0;
-        if (starterPokemon == 0) {
-            player.addPokemon(PokemonFactory.createPokemon("starterBulbasaur"));
-            starterPokemon++;
+        if (player.getTeam().isEmpty()) {
+        // Add the starter Pokémon only if the team is empty (new account)
+        player.addPokemon(PokemonFactory.createPokemon("starterBulbasaur"));
         }
 
         boolean isRunning = true;
@@ -208,7 +253,9 @@ public class Game {
                     scanner.nextLine();
                     break;
                 case "4d":
-                    //displayOptions();
+                    saveManager.saveGame(player.getName(), player);
+                    isRunning = false;
+                    System.out.println("Game Saved");
                     break;
                 case "6":
                     if (currentCity.getName().equals("Lavender Town")) {
@@ -257,6 +304,7 @@ public class Game {
                     break;
                 case "exit":
                     isRunning = false;
+                    System.out.println("Game Not Saved");
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
