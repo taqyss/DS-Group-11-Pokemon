@@ -8,9 +8,9 @@ import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.io.Serializable;
 
-public class Pokemon {
+
+public class Pokemon {//change dikit
     
     
     private String name;
@@ -228,7 +228,6 @@ public class Pokemon {
     }
     }
 }
-    
    
 
 
