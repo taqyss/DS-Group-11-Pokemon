@@ -31,10 +31,16 @@ public class Player implements Serializable{ //CHANGES new updated
 
     // Additional methods to manage player's Pokémon and badges
     public void addPokemon(Pokemon pokemon) {
+        if (team == null) {
+            team = new ArrayList<>();
+        }
         team.add(pokemon);
     }
 
     public void addBadge(String badge) {
+        if (badges == null) {
+            badges = new ArrayList<>();
+        }
         badges.add(badge);
     }
 
@@ -43,7 +49,7 @@ public class Player implements Serializable{ //CHANGES new updated
     }
 
     public Set<String> getBadges() {   //CHANGES
-        if (badges.isEmpty()) {
+        if (badges == null || badges.isEmpty()) {
         Set<String> noBadges = new HashSet<>();
         noBadges.add("- None");
         return noBadges;
@@ -60,7 +66,6 @@ public class Player implements Serializable{ //CHANGES new updated
         this.name = name;
     }
     
-
     public void CatchPokemon(Pokemon wild) {
         if (getTeam().size() >=0 && getTeam().size() <6) {
             addPokemon(wild);
