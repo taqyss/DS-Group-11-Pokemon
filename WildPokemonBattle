@@ -7,12 +7,12 @@ import java.util.Random;
 import java.util.HashMap;
 import java.util.List;
 
-public class WildPokemonBattle {
+public class WildPokemonBattle { 
 
     private Player player;
 
     public WildPokemonBattle() {
-        this.player = new Player("");  // Starting location
+        this.player = new Player("Ash", "Pallet Town", new ArrayList<>(), new ArrayList<>());  // Starting location
     }
 
     private static Scanner scanner = new Scanner(System.in);
@@ -145,16 +145,19 @@ public class WildPokemonBattle {
 }
 
     private static void attack(Pokemon attacker, Pokemon defender, String move) {
-        int damage = attacker.getMoves().get(move);
+        Map<String, Integer> moves = attacker.getMoves();
+        int damage = moves.get(move);
         boolean isSuperEffective = attacker.getStrongAgainst().contains(defender.getType());
         boolean isNotEffective = attacker.getWeakAgainst().contains(defender.getType());
 
         if (isSuperEffective) {
-            damage *= 2; // Double damage for super effective moves
-            System.out.println(attacker.getName() + " used " + move + "! It's super effective!");
+            damage *= 1.5;
+            System.out.println(attacker.getName() + " used " + move + "!");
+            System.out.println("It's super effective!");
         } else if (isNotEffective) {
-            damage /= 2; // Halve damage for not effective moves
-            System.out.println(attacker.getName() + " used " + move + "! It's not very effective...");
+            damage *= 0.5;
+            System.out.println(attacker.getName() + " used " + move + "!");
+            System.out.println("It's not very effective.");
         } else {
             System.out.println(attacker.getName() + " used " + move + "!");
         }
@@ -164,6 +167,7 @@ public class WildPokemonBattle {
     }
 
     private static boolean catchPokemon(Player player, Pokemon wildPokemon, String wildPokemonName) {
+
         Random random = new Random();
         int catchChance = random.nextInt(60);
 
@@ -178,20 +182,22 @@ public class WildPokemonBattle {
 
         if (catchChance < baseCatchRate) {
             System.out.println("Congratulations! You caught the wild " + wildPokemon.getName() + "!");
-            player.addPokemon(new Pokemon(wildPokemon));
+           player.addPokemon(new Pokemon(wildPokemon));
             System.out.println("+----------------------------------------------------------------------+");
+            boolean Catch = true;
             return true;
         } else {
             System.out.println("Oh no! The wild " + wildPokemon.getName() + " broke free!");
             System.out.println("+----------------------------------------------------------------------+");
             return false;
         }
+
     }
 
     private static boolean wildrun() {
         System.out.println("You chose to run away from the battle!");
         System.out.println("The battle has ended.");
         System.out.println("+----------------------------------------------------------------------+");
-        return true; // Return true to indicate the player has run
+        return true; // S true to indicate the player has run   
     }
 }
