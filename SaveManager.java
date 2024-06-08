@@ -29,7 +29,7 @@ public class SaveManager { //changes
     public void saveAllGame() {
         try (FileWriter writer = new FileWriter(SAVE_FILE)) {
             gson.toJson(accounts, writer);
-            System.out.println("Data saved successfully");
+            System.out.println("Successfully Saved");
         } catch (IOException e) {
             System.out.println("Saving error --> " + e.getMessage());
         }
@@ -71,6 +71,6 @@ public class SaveManager { //changes
 
     public void addAccount(Account account) {
         accounts.put(account.getUsername(), account);
+        saveAllGame();
     }
 }
-
