@@ -10,10 +10,11 @@ public class Account implements Serializable{
     private Player player;
     private String playerName;
     
-    public Account(String username, String password, String playerName){
+    public Account(String username, String password, Player player){
         this.username = username;
         this.password = password;
         this.playerName = playerName;
+        this.player = player;
     }
     
     public String getPlayerName(){
