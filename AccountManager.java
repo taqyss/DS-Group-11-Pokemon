@@ -34,7 +34,6 @@ public class AccountManager {
         Account account = new Account(username, password, player);
         saveManager.addAccount(account);
         currentPlayer = player;
-        System.out.println("Account creation successful");
         }
     }
     
