@@ -14,34 +14,33 @@ import java.util.Map;
 import java.lang.*;
 
 public class SaveManager { //changes
-    private static final String Save_File = "players.json";
+    private static final String SAVE_FILE = "testing.json";
     private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private Map<String, Account> accounts;
+    
     
     public SaveManager(){
         accounts = loadAllGame();
         if (accounts == null) {
             accounts = new HashMap<>();
-        }
+        } 
     }
     
     public void saveAllGame() {
-        try(FileWriter write = new FileWriter(Save_File)){
-            gson.toJson(accounts, write);
-            System.out.println("Player's Game saved successfully");
-        }
-        catch(IOException e){
-            System.out.println("Saving error --> "+e.getMessage());
+        try (FileWriter writer = new FileWriter(SAVE_FILE)) {
+            gson.toJson(accounts, writer);
+            System.out.println("Data saved successfully");
+        } catch (IOException e) {
+            System.out.println("Saving error --> " + e.getMessage());
         }
     }
 
     public Map<String, Account> loadAllGame() {
-        try(Reader read = new FileReader(Save_File)){
+        try (Reader reader = new FileReader(SAVE_FILE)) {
             Type type = new TypeToken<Map<String, Account>>() {}.getType();
-            return gson.fromJson(read, type);
-        }
-        catch(IOException e){
-            System.out.println("Loading error --> "+e.getMessage());
+            return gson.fromJson(reader, type);
+        } catch (IOException e) {
+            System.out.println("Loading error --> " + e.getMessage());
             return new HashMap<>();
         }
     }
@@ -51,15 +50,19 @@ public class SaveManager { //changes
         if (account != null) {
             account.setPlayer(player);
             saveAllGame();
+        } else {
+            System.out.println("Failed to save game: account not found for username " + username);
         }
     }
     
     public Player loadGame(String username){
         Account account = accounts.get(username);
-    if (account != null) {
-        return account.getPlayer();
-    }
-    return null;
+        if (account != null) {
+            return account.getPlayer();
+        } else {
+            System.out.println("Failed to load game: account not found for username " + username);
+            return null;
+        }
     }
     
     public Map<String, Account> getAccounts() {
@@ -68,8 +71,6 @@ public class SaveManager { //changes
 
     public void addAccount(Account account) {
         accounts.put(account.getUsername(), account);
-        saveAllGame();
     }
-    
 }
 
