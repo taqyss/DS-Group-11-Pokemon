@@ -1,5 +1,5 @@
-package project.pikachu; //3 days commit (change)
 
+package ds_project; 
 import java.util.Scanner;
 import java.util.List;
 import java.util.Random;
@@ -47,13 +47,18 @@ public class Game { //changes
         switch (choice) {
             case 1:
                 accountManager.createAccount();
+                player = accountManager.getCurrentPlayer();
+                if (player != null) {
+                    player = saveManager.loadGame(player.getName());
+                }
+                System.out.println("Welcome, " + player.getName());
                 start();
                 break;
                 
             case 2:
                 if (accountManager.login()) {
                     player = accountManager.getCurrentPlayer();
-                    if(player != null){
+                    if (player != null) {
                         player = saveManager.loadGame(player.getName());
                     }
                     System.out.println("Welcome, " + player.getName());
@@ -72,9 +77,9 @@ public class Game { //changes
 
     public void start() {
         //just nak try jer letak pokemon dulu jadi tak--------------------------------------------------------------------------------------------------------------------------
-        if (player.getTeam().isEmpty()) {
-        // Add the starter Pokémon only if the team is empty (new account)
-        player.addPokemon(PokemonFactory.createPokemon("starterBulbasaur"));
+        if (player.getTeam() == null || player.getTeam().isEmpty()) {
+            player.addPokemon(PokemonFactory.createPokemon("starterBulbasaur"));
+            System.out.println("Starter Pokémon added: " + player.getTeam().get(0).getName());
         }
 
         boolean isRunning = true;
@@ -253,9 +258,9 @@ public class Game { //changes
                     scanner.nextLine();
                     break;
                 case "4d":
+                    System.out.println("Saving game for player: " + player.getName());
                     saveManager.saveGame(player.getName(), player);
                     isRunning = false;
-                    System.out.println("Game Saved");
                     break;
                 case "6":
                     if (currentCity.getName().equals("Lavender Town")) {
@@ -519,3 +524,5 @@ public class Game { //changes
     }
 
 }
+
+
