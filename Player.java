@@ -21,6 +21,10 @@ public class Player implements Serializable{ //CHANGES new updated
         this.name = name;
     }
 
+    public Player(String location) {
+        this.location = location;
+    }
+
     public String getLocation() {
         return location;
     }
