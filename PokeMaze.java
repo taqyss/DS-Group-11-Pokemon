@@ -13,14 +13,14 @@ import java.util.Stack;
 
 public class PokeMaze {
     private char[][] maze;
-    private Stack<int[]> pathStack; // To store the player's path
+    private Stack<int[]> pathStack; //to store the player's path
     private int playerRow;
-    private int playerCol; // Player's current position
+    private int playerCol; //Player's current position
     private boolean gameRunning;
 
     public PokeMaze() {
-        // Initialize the maze here with the correct layout including walls ('#'), paths ('.'), Ghastly ('G'), start ('S') and end ('E').
-        // Assume the starting point (S) is at (1, 1)
+        //initialize the maze here with the correct layout including walls ('#'), paths ('.'), Ghastly ('G'), start ('S') and end ('E').
+        // assume the starting point (S) is at (1, 1)
         playerRow = 1;
         playerCol = 1;
         pathStack = new Stack<>();
@@ -52,7 +52,7 @@ public class PokeMaze {
         for (int i = 0; i < maze.length; i++) {
             for (int j = 0; j < maze[i].length; j++) {
                 if (i == playerRow && j == playerCol) {
-                    System.out.print('P'); // Use 'P' to indicate the player's current position
+                    System.out.print('P'); //use 'P' to indicate the player's current position
                 } else {
                     System.out.print(maze[i][j]);
                 }
@@ -66,20 +66,20 @@ public class PokeMaze {
         int newCol = playerCol;
 
         switch (input.trim().toLowerCase()) {
-            case "up":
+            case "w":
                 newRow--;
                 break;
-            case "down":
+            case "s":
                 newRow++;
                 break;
-            case "left":
+            case "a":
                 newCol--;
                 break;
-            case "right":
+            case "d":
                 newCol++;
                 break;
             default:
-                System.out.println("Invalid input. Please enter 'up', 'down', 'left', or 'right'.");
+                System.out.println("Invalid input. Please enter 'w', 'a', 's', or 'd'.");
                 return;
         }
 
@@ -108,11 +108,6 @@ public class PokeMaze {
 
     private boolean isValidMove(int row, int col) {
         return row >= 0 && row < maze.length && col >= 0 && col < maze[row].length && maze[row][col] != '#';
-    }
-
-    public static void main(String[] args) {
-        PokeMaze pokeMaze = new PokeMaze();
-        pokeMaze.runMaze();
     }
 }
 
