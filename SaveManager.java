@@ -33,7 +33,7 @@ public class SaveManager{
             System.out.println("Successfully Saved");
         } 
         catch(IOException e){
-            System.out.println("Saving error --> " + e.getMessage());
+            System.out.println("Saving error --> "+e.getMessage());
         }
     }
 
@@ -45,7 +45,7 @@ public class SaveManager{
             return gson.fromJson(reader, type);
         } 
         catch(IOException e){
-            System.out.println("Loading error --> " + e.getMessage());
+            System.out.println("Loading error --> "+e.getMessage());
             return new HashMap<>();
         }
     }
@@ -53,13 +53,14 @@ public class SaveManager{
     //for saving game state for an account
     public void saveGame(String username, Player player){
         Account account = accounts.get(username);
-        if (account != null) {
+        if(account != null){
             //update the player object with the account
             account.setPlayer(player);
             //save all data
             saveAllGame();
-        } else {
-            System.out.println("Failed to save game: account not found for username " + username);
+        } 
+        else{
+            System.out.println("Account for "+username+" is not found");
         }
     }
     
@@ -69,20 +70,21 @@ public class SaveManager{
             loadAllGame();//make sure if accounts exists in loadAllGame()
         }
         Account account = accounts.get(username);
-        if (account != null) {
+        if(account != null){
             return account.getPlayer();
-        } else {
-            System.out.println("Failed to load game: account not found for username " + username);
+        } 
+        else{
+            System.out.println("Account for "+username+" is not found");
             return null;
         }
     }
     
-    public Map<String, Account> getAccounts() {
+    public Map<String, Account> getAccounts(){
         return accounts;
     }
     
     //adding account information and saving it in file 
-    public void addAccount(Account account) {
+    public void addAccount(Account account){
         accounts.put(account.getUsername(), account);
         saveAllGame();
     }
