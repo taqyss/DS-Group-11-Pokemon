@@ -232,11 +232,7 @@ public class Game { //changes
                         System.out.println("Invalid choice. Please try again.");
                     }
                     break;
-
                 case "4a":
-                    //displayOptions();
-                    break;
-                case "4b":
                     int turn = 0;
                     System.out.println("Your Pokemon:");
                     for (Pokemon pokemon : player.getTeam()) {
@@ -252,12 +248,12 @@ public class Game { //changes
                     scanner.nextLine();
                     break;
 
-                case "4c":
+                case "4b":
                     System.out.println("Your Badges:\n" + player.getBadges());
                     System.out.println("+----------------------------------------------------------------------+");
                     scanner.nextLine();
                     break;
-                case "4d":
+                case "4c":
                     System.out.println("Saving game for player: " + player.getName());
                     saveManager.saveGame(player.getName(), player);
                     isRunning = false;
@@ -347,7 +343,7 @@ public class Game { //changes
         }
 
         System.out.println("[4] Player Options");
-        System.out.printf("a.Show map   b.Show My Pokemon   c.Show My badges   d.Save and Exit\n");
+        System.out.printf("a.Show My Pokemon   b.Show My badges   c.Save and Exit\n");
         System.out.println("[5] Enter Safari Zone");
         if (currentCity.getName().equals("Lavender Town")) {
             System.out.println("[6] Enter PokeMaze");
