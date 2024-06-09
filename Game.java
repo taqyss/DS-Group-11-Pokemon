@@ -343,7 +343,7 @@ public class Game { //changes
         } else if (currentCity.getName().equals("Vermilion City")) {
             System.out.print("[Magnemite, Voltorb, Diglett are common]\n");
         } else if (currentCity.getName().equals("Viridian City")) {
-            System.out.print("[Pidgey, Rattata, Nidoran♀, Nidoran♂ are common]\n");
+            System.out.print("[Pidgey, Rattata, Nidoran are common]\n");
         }
 
         System.out.println("[4] Player Options");
