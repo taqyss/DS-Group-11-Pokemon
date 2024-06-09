@@ -22,23 +22,23 @@ public class SafariZone {
     public void sortPokemons() {
         System.out.println("Sorting your Pokémon according to their unique preferences...");
 
-        // Step 1: Place Eevee at the beginning
+        //Step 1: Place Eevee at the beginning
         placePokemon("Eevee", 0);
         printStep("Step 1: Eevee insists on being positioned either at the beginning of the lineup to showcase its adaptability.");
 
-        // Step 2: Place Pikachu in the center
+        //Step 2: Place Pikachu in the center
         placePokemon("Pikachu", sortedPokemons.size() / 2);
         printStep("Step 2: Pikachu demands to be placed at the center of the arrangement.");
 
-        // Step 3: Place Snorlax at the end
+        //Step 3:Place Snorlax at the end
         placePokemon("Snorlax", sortedPokemons.size() - 1);
         printStep("Step 3: Snorlax insists on being positioned at the end of the lineup to ensure maximum relaxation.");
 
-        // Step 4: Place Jigglypuff next to Pikachu
+        //Step 4: Place Jigglypuff next to Pikachu
         placePokemonNextTo("Jigglypuff", "Pikachu");
         printStep("Step 4: Jigglypuff prefers to be surrounded by other 'cute' Pokémon for morale purposes.");
 
-        // Step 5: Place Bulbasaur ensuring it's not next to Charmander
+        //Step 5: Place Bulbasaur ensuring it's not next to Charmander
         placePokemonAvoiding("Bulbasaur", "Charmander");
         printStep("Step 5: Bulbasaur refuses to be placed next to Charmander.");
 
@@ -76,7 +76,7 @@ public class SafariZone {
     private void placePokemonAvoiding(String name, String avoidNeighbor) {
         int avoidIndex = findPokemonIndex(avoidNeighbor, sortedPokemons);
         if (avoidIndex == -1) {
-            // If the avoidNeighbor is not found, place the Pokémon in any remaining spot
+            //if the avoidNeighbor is not found, place the Pokémon in any remaining spot
             placeRemainingPokemon(name);
             return;
         }
@@ -95,7 +95,7 @@ public class SafariZone {
     }
 
     private void placeRemainingPokemon(String name) {
-        for (int i = 0; i < sortedPokemons.size(); i++) {
+        for (int i= 0; i < sortedPokemons.size(); i++) {
             if (sortedPokemons.get(i) == null) {
                 sortedPokemons.set(i, pokemons.get(findPokemonIndex(name)));
                 break;
@@ -104,7 +104,7 @@ public class SafariZone {
     }
 
     private int findPokemonIndex(String name) {
-        for (int i = 0; i < pokemons.size(); i++) {
+        for (int i= 0; i < pokemons.size(); i++) {
             if (pokemons.get(i).getName().equals(name)) {
                 return i;
             }
