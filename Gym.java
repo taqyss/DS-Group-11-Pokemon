@@ -7,9 +7,8 @@ package project.pikachu; //3 weeks commit
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Gym {
-    
+
     private String leaderName=" ";
     private List<Pokemon> leaderPokemon;
     private int leaderlevel;
@@ -20,22 +19,32 @@ public class Gym {
     private int leadercurrentHitPoints;
     private int leaderXP;
     private int leadercurrentXP;
-    
 
     public Gym(String leaderName , List<Pokemon> leaderPokemon , int leaderlevel , List<String> leaderStrongAgainst , List<String>  leaderWeakAgainst , String gymBadges , int leaderHitPoints , int leaderXP , int leadercurrentHitPoints , int leadercurrentXP ) {
         this.leaderName = leaderName;
         this.leaderPokemon = new ArrayList<>();
-        this.leaderlevel=leaderlevel;
-        this.leaderStrongAgainst=new ArrayList<>();
-        this.leaderWeakAgainst=new ArrayList<>();
-        this.gymBadges=gymBadges;
-        this.leaderXP=leaderXP;
-        this.leadercurrentXP=leadercurrentXP;
-        this.leaderHitPoints=leaderHitPoints;
-        this.leadercurrentHitPoints=leadercurrentHitPoints;
+        this.leaderlevel = leaderlevel;
+        this.leaderStrongAgainst = new ArrayList<>();
+        this.leaderWeakAgainst = new ArrayList<>();
+        this.gymBadges = gymBadges;
+        this.leaderXP = leaderXP;
+        this.leadercurrentXP = leadercurrentXP;
+        this.leaderHitPoints = leaderHitPoints;
+        this.leadercurrentHitPoints = leadercurrentHitPoints;
     }
-    
-    
+
+    public void reset() {
+        this.leaderName = " ";
+        this.leaderPokemon.clear();
+        this.leaderlevel = 0;
+        this.leaderStrongAgainst.clear();
+        this.leaderWeakAgainst.clear();
+        this.gymBadges = " ";
+        this.leaderHitPoints = 0;
+        this.leadercurrentHitPoints = 0;
+        this.leaderXP = 0;
+        this.leadercurrentXP = 0;
+    }
 
     public void addPokemon(Pokemon pokemon) {
         leaderPokemon.add(pokemon);
@@ -44,79 +53,77 @@ public class Gym {
     public String getleaderName() {
         return leaderName;
     }
-    
+
     public void setleaderName(String leaderName) {
-        this.leaderName=leaderName;
+        this.leaderName = leaderName;
     }
-    
-     public String getgymBadges() {
+
+    public String getgymBadges() {
         return gymBadges;
     }
-    
+
     public void setgymBadges(String gymBadges) {
-        this.gymBadges=gymBadges;
+        this.gymBadges = gymBadges;
     }
-    
 
     public List<Pokemon> getleaderPokemon() {
         return new ArrayList<>(leaderPokemon);
     }
-    
-     public void setleaderPokemon(Pokemon pokemon) {
-     this.leaderPokemon.add(pokemon);
+
+    public void setleaderPokemon(Pokemon pokemon) {
+        this.leaderPokemon.add(pokemon);
     }
-    
-    public int getleaderLevel(){
+
+    public int getleaderLevel() {
         return leaderlevel;
     }
-    
-      public List<String>  getleaderStrongAgainst (){
+
+    public List<String> getleaderStrongAgainst() {
         return new ArrayList<>(leaderStrongAgainst);
     }
-    
-    public void setleaderStrongAgainst(String StrongAgainst){
-        this.leaderStrongAgainst =new ArrayList<>();   
+
+    public void setleaderStrongAgainst(String StrongAgainst) {
+        this.leaderStrongAgainst.add(StrongAgainst);
     }
-    
-    public List<String> getleaderWeakAgainst (){
+
+    public List<String> getleaderWeakAgainst() {
         return new ArrayList<>(leaderWeakAgainst);
     }
-    
-     public void setleaderWeakAgainst (String WeakAgainst ){
-        this.leaderWeakAgainst = new ArrayList<>();
-     }    
-     
-        public int getleaderHitPoints(){
+
+    public void setleaderWeakAgainst(String WeakAgainst) {
+        this.leaderWeakAgainst.add(WeakAgainst);
+    }
+
+    public int getleaderHitPoints() {
         return leaderHitPoints;
     }
 
-     public void setleaderHitPoints(int hp) {
-        this.leaderHitPoints = leaderHitPoints;
+    public void setleaderHitPoints(int hp) {
+        this.leaderHitPoints = hp;
     }
-    
-     public int getleadercurrentHitPoints() {
+
+    public int getleadercurrentHitPoints() {
         return leadercurrentHitPoints;
     }
-     
-     public int getleaderXP (){
-        return leaderXP;
-    }
-    
-     public void setleaderXP ( int leaderXP ){
-        this.leaderXP = leaderXP;
-    }
-    
-    public int getleadercurrentXP (){
-        return leadercurrentXP;
-    }
-    
-    public void setleadercurrentXP ( int leadercurrentXP ){  
-        this.leadercurrentXP = leadercurrentXP;
-    }
-       
 
     public void setleadercurrentHitPoints(int leadercurrenthitPoints) {
         this.leadercurrentHitPoints = leadercurrenthitPoints;
+    }
+
+    public int getleaderXP() {
+        return leaderXP;
+    }
+
+    public void setleaderXP(int leaderXP) {
+        this.leaderXP = leaderXP;
+    }
+
+    public int getleadercurrentXP() {
+        return leadercurrentXP;
+    }
+
+    public void setleadercurrentXP(int leadercurrentXP) {
+        this.leadercurrentXP = leadercurrentXP;
     }
 }
 
