@@ -36,7 +36,7 @@ public class AccountManager{
         }
         else{
             //create new player with its new account
-            Player player = new Player(username, "Pallet Town", new ArrayList<>(),new HashSet<>());
+            Player player = new Player(username, "Pallet Town", new ArrayList<>(), new ArrayList<>());
             Account account = new Account(username, password, player);
             //adding new account to the SaveManager
             saveManager.addAccount(account);
