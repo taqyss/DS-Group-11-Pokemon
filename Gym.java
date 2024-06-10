@@ -34,6 +34,19 @@ public class Gym {
         this.leaderHitPoints=leaderHitPoints;
         this.leadercurrentHitPoints=leadercurrentHitPoints;
     }
+
+ public void reset() {
+        this.leaderName = " ";
+        this.leaderPokemon.clear();
+        this.leaderlevel = 0;
+        this.leaderStrongAgainst.clear();
+        this.leaderWeakAgainst.clear();
+        this.gymBadges = " ";
+        this.leaderHitPoints = 0;
+        this.leadercurrentHitPoints = 0;
+        this.leaderXP = 0;
+        this.leadercurrentXP = 0;
+    }  
     
     
 
