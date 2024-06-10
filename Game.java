@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.*;
 import java.util.ArrayList;
 
-public class Game { //changes
+public class Game {
 
     private GameMap gameMap;
     private Player player;
@@ -14,37 +14,45 @@ public class Game { //changes
     private Gym gym;
     private Wild wild;
     private Pokemon pokemon;
+    /*
     private SaveManager saveManager;
+     */
+
     private AccountManager accountManager;
     private Game game;
 
     public Game() {
         this.gameMap = new GameMap();
-        this.player = new Player("", "Pallet Town", new ArrayList<>(), new ArrayList<>());  // Starting location
+        this.player = new Player("", "Pallet Town", new ArrayList<>(), new HashSet<>());  // Starting location
         this.scanner = new Scanner(System.in);
         this.gym = new Gym("", new ArrayList<>(), 0, new ArrayList<>(), new ArrayList<>(), "", 0, 0, 0, 0);
         this.wild = new Wild("", new ArrayList<>(), 0, new ArrayList<>(), new ArrayList<>(), 0, 0, 0, 0);
         this.pokemon = new Pokemon("", "", 0, 0, 0, new ArrayList<>(), new ArrayList<>(), new HashMap<>(), new HashMap<>(), 0, 0);
+        /*
         this.saveManager = new SaveManager();
         this.accountManager = new AccountManager(saveManager);
+         */
+
     }
-    
-    public Game(Player player){
+
+    public Game(Player player) {
         this.player = player;
-        this.gameMap = new GameMap(); 
+        this.gameMap = new GameMap();
     }
-    
-    public Player getPlayer(){
+
+    public Player getPlayer() {
         return player;
     }
-    
-    public void enter(){        
+
+    public void enter() {
         System.out.println("Welcome to Pokemon Game!");
         System.out.println("[1] Create Account");
         System.out.println("[2] Login");
         int choice = scanner.nextInt();
         scanner.nextLine();
         switch (choice) {
+
+            /*
             case 1:
                 accountManager.createAccount();
                 player = accountManager.getCurrentPlayer();
@@ -56,6 +64,7 @@ public class Game { //changes
                 break;
                 
             case 2:
+                
                 if (accountManager.login()) {
                     player = accountManager.getCurrentPlayer();
                     if (player != null) {
@@ -65,15 +74,13 @@ public class Game { //changes
                     start();
                 } 
                 break;
-
+             */
             default:
                 System.out.println("Invalid choice.");
                 enter();
                 break;
         }
     }
-    
-    
 
     public void start() {
         //just nak try jer letak pokemon dulu jadi tak--------------------------------------------------------------------------------------------------------------------------
@@ -89,69 +96,61 @@ public class Game { //changes
             City currentCity = gameMap.getCity(player.getLocation());
             System.out.println("You are currently in " + currentCity.getName());
 
-            //set the leader gym and wild pokemon--------------------------------------------------------------------------------------------------------------------------------
+// Reset the gym follow the current city 
+            gym.reset();
+
+// Set balik gym leader follow the current city 
             if (currentCity.getName().equals("Pallet Town")) {
                 gym.setleaderName("- None");
-
             } else if (currentCity.getName().equals("Lavender Town")) {
-
                 gym.setleaderName("- None");
-
             } else if (currentCity.getName().equals("Cinnabar Island")) {
                 gym.setleaderName("Blaine");
                 gym.setgymBadges("Volcano Badge");
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Growlithe"));
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Ponyta"));
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Magmar"));
-
             } else if (currentCity.getName().equals("Celadon City")) {
                 gym.setleaderName("Erika");
                 gym.setgymBadges("Rainbow Badge");
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Victreebel"));
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Tangela"));
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Exeggcute"));
-
             } else if (currentCity.getName().equals("Cerulean City")) {
                 gym.setleaderName("Misty");
                 gym.setgymBadges("Cascade Badge");
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Staryu"));
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Horsea"));
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Goldeen"));
-
             } else if (currentCity.getName().equals("Fuchsia City")) {
                 gym.setleaderName("Koga");
                 gym.setgymBadges("Soul Badge");
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Koffing"));
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Muk"));
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Arbok"));
-
             } else if (currentCity.getName().equals("Pewter City")) {
                 gym.setleaderName("Brock");
                 gym.setgymBadges("Boulder Badge");
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Geodude"));
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Onix"));
-
             } else if (currentCity.getName().equals("Saffron City")) {
                 gym.setleaderName("Sabrina");
                 gym.setgymBadges("Marsh Badge");
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Kadabra"));
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Venomoth"));
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Hypno"));
-
             } else if (currentCity.getName().equals("Vermilion City")) {
                 gym.setleaderName("Lt.Surge");
                 gym.setgymBadges("Thunder Badge");
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Voltorb"));
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Magnemite"));
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Pikachu"));
-
             } else if (currentCity.getName().equals("Viridian City")) {
                 gym.setleaderName("Giovanni");
                 gym.setgymBadges("Earth Badge");
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Rhyhorn"));
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Dugtrio"));
                 gym.setleaderPokemon(PokemonFactory.createPokemon("Marowak"));
-
             }
 
             displayOptions(currentCity);
@@ -212,7 +211,7 @@ public class Game { //changes
                         int choicewild = rad.nextInt(pokemons.size());
                         wild.setwildPokemon(PokemonFactory.createPokemon(pokemons.get(choicewild)));
                     }
-                    
+
                     System.out.println("Your Pokemon:");
                     for (int i = 0; i < player.getTeam().size(); i++) {
                         Pokemon pokemon = player.getTeam().get(i);
@@ -232,7 +231,11 @@ public class Game { //changes
                         System.out.println("Invalid choice. Please try again.");
                     }
                     break;
+
                 case "4a":
+                    //displayOptions();
+                    break;
+                case "4b":
                     int turn = 0;
                     System.out.println("Your Pokemon:");
                     for (Pokemon pokemon : player.getTeam()) {
@@ -248,16 +251,18 @@ public class Game { //changes
                     scanner.nextLine();
                     break;
 
-                case "4b":
+                case "4c":
                     System.out.println("Your Badges:\n" + player.getBadges());
                     System.out.println("+----------------------------------------------------------------------+");
                     scanner.nextLine();
                     break;
-                case "4c":
+                case "4d":
+                /*
                     System.out.println("Saving game for player: " + player.getName());
                     saveManager.saveGame(player.getName(), player);
                     isRunning = false;
                     break;
+                 */
                 case "6":
                     if (currentCity.getName().equals("Lavender Town")) {
                         enterPokeMaze();
@@ -272,21 +277,21 @@ public class Game { //changes
                     break;
                 case "7"://setiap leader 
                     System.out.println("Your Pokemon:");
-                    for (int i =0 ; i < player.getTeam().size(); i++) {
+                    for (int i = 0; i < player.getTeam().size(); i++) {
                         Pokemon pokemon = player.getTeam().get(i);
-                        System.out.println((i+1) + ": " + pokemon.getName() + " - Level: " + pokemon.getLevel());
+                        System.out.println((i + 1) + ": " + pokemon.getName() + " - Level: " + pokemon.getLevel());
                     }
                     System.out.println("+----------------------------------------------------------------------+");
                     System.out.print("Please choose your pokemon: ");
-                    Scanner scangym = new Scanner (System.in);
-                    int choosepokegym = scangym.nextInt()-1;
+                    Scanner scangym = new Scanner(System.in);
+                    int choosepokegym = scangym.nextInt() - 1;
                     scanner.nextLine();
 
-                    if (choosepokegym >= 0 && choosepokegym  < player.getTeam().size()) {
-                        Pokemon chosenPokemon = player.getTeam().get(choosepokegym );
+                    if (choosepokegym >= 0 && choosepokegym < player.getTeam().size()) {
+                        Pokemon chosenPokemon = player.getTeam().get(choosepokegym);
                         System.out.println("You have chosen: " + chosenPokemon.getName());
                     }
-                   
+
                     GymBattle.battle(player, gym);
                     break;
                 case "8":
@@ -339,11 +344,11 @@ public class Game { //changes
         } else if (currentCity.getName().equals("Vermilion City")) {
             System.out.print("[Magnemite, Voltorb, Diglett are common]\n");
         } else if (currentCity.getName().equals("Viridian City")) {
-            System.out.print("[Pidgey, Rattata, Nidoran are common]\n");
+            System.out.print("[Pidgey, Rattata, Nidoran♀, Nidoran♂ are common]\n");
         }
 
         System.out.println("[4] Player Options");
-        System.out.printf("a.Show My Pokemon   b.Show My badges   c.Save and Exit\n");
+        System.out.printf("a.Show map   b.Show My Pokemon   c.Show My badges   d.Save and Exit\n");
         System.out.println("[5] Enter Safari Zone");
         if (currentCity.getName().equals("Lavender Town")) {
             System.out.println("[6] Enter PokeMaze");
@@ -520,5 +525,6 @@ public class Game { //changes
     }
 
 }
+
 
 
