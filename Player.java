@@ -1,23 +1,28 @@
 
 package project.pikachu; //3 weeks commit
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Player { //CHANGES
+public class Player implements Serializable{ //CHANGES new updated
     
     private String name;
     private String location;  // Current city location
     private List<Pokemon> team; //pokemon dlm team 
-    private HashSet<String> badges;
+    private List<String> badges;
 
-    public Player(String name, String startingLocation, List<Pokemon> team,HashSet<String> badges) {
+    public Player(String name, String startingLocation, List<Pokemon> team, List<String> badges) {
         this.location = startingLocation;
         this.team = team;
         this.badges = badges;
         this.name = name;
+    }
+
+    public Player(String location) {
+        this.location = location;
     }
 
     public String getLocation() {
@@ -38,7 +43,7 @@ public class Player { //CHANGES
 
     public void addBadge(String badge) {
         if (badges == null) {
-            badges = new HashSet<>();
+            badges = new ArrayList<>();
         }
         badges.add(badge);
     }
@@ -72,5 +77,4 @@ public class Player { //CHANGES
             System.out.println("You already have 6 Pokemon");
         }
     }
-    
 }
