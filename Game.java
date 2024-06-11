@@ -88,6 +88,8 @@ public class Game { //changes
         while (isRunning) {
             City currentCity = gameMap.getCity(player.getLocation());
             System.out.println("You are currently in " + currentCity.getName());
+ //reset back follow the current location-----------------------------------------------------------------------------------------------------------------------------          
+            gym.reset();
 
             //set the leader gym and wild pokemon--------------------------------------------------------------------------------------------------------------------------------
             if (currentCity.getName().equals("Pallet Town")) {
