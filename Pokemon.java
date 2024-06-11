@@ -227,6 +227,11 @@ public class Pokemon {//change dikit
         pokemon.setcurrentHitPoints(pokemon.getHitPoints());      
     }
     }
+
+        @Override
+    public String toString() {
+        return name;  // Simple and clear, just showing the name for now
+    }
 }
    
 
