@@ -409,23 +409,26 @@ public class Game { //changes
     }
 
     private void movePlayer(City currentCity) {
-        List<City> adjacentCities = currentCity.getAdjacentCities();
+        Map<City, Integer> adjacentCities = currentCity.getAdjacentCities();
         if (adjacentCities.isEmpty()) {
             System.out.println("There are no cities to move to from here.");
             return;
         }
 
         System.out.println("Available cities to move to:");
-        for (int i = 0; i < adjacentCities.size(); i++) {
-            System.out.println((i + 1) + ". " + adjacentCities.get(i).getName());
+        List<City> citiesList = new ArrayList<>(adjacentCities.keySet());  // Store cities in a list for indexing
+        int index = 0;
+        for (City city : citiesList) {
+            System.out.println((index + 1) + ". " + city.getName() + " (Distance: " + adjacentCities.get(city) + ")");
+            index++;
         }
 
         System.out.print("Enter the number of the city you want to move to: ");
         int choice = scanner.nextInt() - 1;
         scanner.nextLine();  // Consume the newline left behind by nextInt()
 
-        if (choice >= 0 && choice < adjacentCities.size()) {
-            City chosenCity = adjacentCities.get(choice);
+        if (choice >= 0 && choice < citiesList.size()) {
+            City chosenCity = citiesList.get(choice);  // Correctly retrieve the City object
             player.setLocation(chosenCity.getName());
             System.out.println("Moving to " + chosenCity.getName() + "...");
         } else {
