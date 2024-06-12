@@ -10,21 +10,23 @@ package ds_project;
  */
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class City {
     private String name;
-    private List<City> adjacentCities;
+    private Map<City, Integer> adjacentCities;  //map to store adjacent cities and distances
     private List<Pokemon> wildPokemon;
     private Gym gym;
 
     public City(String name) {
         this.name = name;
-        this.adjacentCities = new ArrayList<>();
+        this.adjacentCities = new HashMap<>();
         this.wildPokemon = new ArrayList<>();
     }
 
-    public void addAdjacentCity(City city) {
-        adjacentCities.add(city);
+    public void addAdjacentCity(City city, int distance) {
+        adjacentCities.put(city, distance);
     }
 
     public void addWildPokemon(Pokemon pokemon) {
@@ -39,8 +41,8 @@ public class City {
         return name;
     }
 
-    public List<City> getAdjacentCities() {
-        return new ArrayList<>(adjacentCities);
+    public Map<City, Integer> getAdjacentCities() {
+        return adjacentCities;  //getter to access the adjacent cities with distances
     }
 
     public List<Pokemon> getWildPokemon() {
